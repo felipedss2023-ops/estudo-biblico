@@ -1,5 +1,5 @@
 // Service worker do Estudo Bíblico. Ao publicar uma nova versão do index.html, aumente o número em V.
-var V='estudo-v25',SHELL=['./','index.html','config.js','manifest.json','icon-192.png','icon-512.png','biblia-jfaal.json','biblia-jfaal-creditos.txt'];
+var V='estudo-v27',SHELL=['./','index.html','config.js','manifest.json','icon-192.png','icon-512.png','biblia-jfaal.json','biblia-jfaal-creditos.txt'];
 self.addEventListener('install',function(e){e.waitUntil(caches.open(V).then(function(c){return Promise.all(SHELL.map(function(u){return c.add(u).catch(function(){})}))}).then(function(){return self.skipWaiting()}))});
 self.addEventListener('activate',function(e){e.waitUntil(caches.keys().then(function(k){return Promise.all(k.filter(function(n){return n!==V}).map(function(n){return caches.delete(n)}))}).then(function(){return self.clients.claim()}))});
 self.addEventListener('fetch',function(e){

@@ -16,7 +16,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script>/* Aberto como arquivo (file:/data:) o app não guarda dados nem sincroniza: vai para o servidor de teste local */
 if(!/^https?:$/.test(location.protocol))location.replace('http://localhost:8080/');</script>
-<script>try{var t0=localStorage.getItem('tema');if(t0&&t0!=='auto')document.documentElement.setAttribute('data-theme',t0)}catch(e){}</script>
+<script>try{var t0=localStorage.getItem('tema');if(t0&&t0!=='auto')document.documentElement.setAttribute('data-theme',t0)}catch(e){}
+/* Sem login neste aparelho: já começa trancado (evita mostrar o app por um instante antes da tela de entrada) */
+try{if(!localStorage.getItem('estudo_codigo'))document.documentElement.classList.add('trancado')}catch(e){document.documentElement.classList.add('trancado')}</script>
 <style>
 :root{--bg:#FAF6EC;--card:#FFFDF7;--bg2:#F1EAD8;--ink:#2B2620;--mute:#6b6455;--line:#DDD3BC;--acc:#A9812F;--acc2:#cba658;--onacc:#201803;--cover:#1C2333;--cover2:#262f45;--onc:#EFE7D0;--onc2:#b9b19a;--bad:#7A2E2E;--ok:#3d6b4f;--sh:0 1px 2px rgba(28,35,51,.05),0 4px 14px rgba(28,35,51,.06);--serif:Lora,Georgia,'Times New Roman',serif;--sans:'Work Sans',-apple-system,'Segoe UI',Roboto,sans-serif;color-scheme:light}
 @media(prefers-color-scheme:dark){:root:not([data-theme]){--bg:#171A22;--card:#1E222D;--bg2:#262b38;--ink:#E7E2D3;--mute:#9A9484;--line:#333a4a;--acc:#c29a45;--acc2:#cba658;--onacc:#1a1406;--cover:#0F131C;--cover2:#171E2C;--bad:#d58f8f;--ok:#7fbf98;--sh:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25);color-scheme:dark}}
@@ -153,6 +155,17 @@ mark{background:color-mix(in srgb,var(--acc2) 45%,transparent);color:inherit;bor
 #nav button span{font-size:1.2rem}#nav button.on{color:var(--acc2);background:rgba(203,166,88,.14)}
 #toast{position:fixed;left:50%;bottom:calc(140px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);max-width:90vw;background:var(--cover);color:var(--onc);padding:10px 18px;border-radius:999px;font-size:.86rem;opacity:0;pointer-events:none;transition:all .25s;z-index:60;text-align:center}
 #toast.show{opacity:1;transform:translate(-50%,0)}
+/* tela de entrada (login) */
+#login{display:none;position:fixed;inset:0;z-index:80;align-items:center;justify-content:center;padding:24px;background:radial-gradient(circle at 30% 20%,var(--cover2),var(--cover) 70%);color:var(--onc)}
+html.trancado #login{display:flex}html.trancado header.top,html.trancado .wrap,html.trancado #nav,html.trancado .smenu,html.trancado .selbar{display:none!important}
+.lgbox{width:min(360px,100%);display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px}
+.lgt{font-family:var(--serif);font-size:2rem;margin-top:6px}.lgt em{color:var(--acc2)}
+.lgs{margin:-4px 0 6px;color:var(--onc2);font-size:.92rem}
+.lgf{position:relative;width:100%}.lgf input{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:var(--onc);padding:12px 44px 12px 14px;border-radius:12px;font-size:1rem;margin:0}
+.lgf input::placeholder{color:#a8a08a}.lgf input:focus{border-color:var(--acc2);box-shadow:0 0 0 2px rgba(203,166,88,.25)}
+.lgo{position:absolute;right:6px;top:50%;transform:translateY(-50%);background:none;border:0;cursor:pointer;font-size:1rem;opacity:.7;padding:6px}
+.lgbox .btn{width:100%;padding:12px;font-size:1rem;border-radius:12px}
+.lgm{min-height:1.2em;margin:2px 0 0;color:#f0b4a8;font-size:.86rem}
 /* apresentação */
 .pres{position:fixed;inset:0;background:var(--cover);z-index:50;display:none;flex-direction:column;color:#EFE7D0;padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px)}
 .pres.show{display:flex}
@@ -177,10 +190,19 @@ mark{background:color-mix(in srgb,var(--acc2) 45%,transparent);color:inherit;bor
 </style>
 </head>
 <body>
+<div id="login"><form class="lgbox" onsubmit="entrar();return false" autocomplete="on">
+  <img src="icon-192.png" alt="" width="76" height="76" style="border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,.35)">
+  <div class="lgt">Estudo <em>Bíblico</em></div>
+  <p class="lgs">Digite seu código de acesso para entrar.</p>
+  <input type="text" name="username" value="estudo-biblico" autocomplete="username" hidden>
+  <div class="lgf"><input id="lgc" name="password" type="password" autocomplete="current-password" placeholder="Código de acesso" required><button type="button" class="lgo" onclick="var i=document.getElementById('lgc');i.type=i.type==='password'?'text':'password'" title="Mostrar/ocultar">👁</button></div>
+  <button id="lgb" class="btn" type="submit">Entrar</button>
+  <p id="lgm" class="lgm"></p>
+</form></div>
 <header class="top"><div class="wrap hd">
   <button id="voltar" class="hbtn" onclick="voltar()" title="Voltar" style="display:none">←</button>
   <div class="logo" onclick="go('home')">Estudo <em>Bíblico</em></div>
-  <span id="sync" class="sync" onclick="if(cfgOk()&&!LS.getItem('estudo_codigo'))pedeCodigo(event)" style="cursor:pointer">Somente local</span>
+  <span id="sync" class="sync">Somente local</span>
   <button class="hbtn" onclick="togMenu(event)" title="Configurações" style="position:relative">⚙<span id="bkdot" title="Backup precisa de atenção" style="display:none;position:absolute;top:3px;right:3px;width:8px;height:8px;border-radius:50%;background:var(--acc2)"></span></button>
 </div></header>
 <div id="menu" class="smenu" onclick="event.stopPropagation()"></div>
@@ -212,21 +234,37 @@ function setStatus(t){document.getElementById('sync').textContent=t}
 function cfgOk(){return typeof CONFIG!=='undefined'&&CONFIG.SUPABASE_URL.indexOf('http')===0&&CONFIG.SUPABASE_KEY.length>20}
 function code(){return LS.getItem('estudo_codigo')}
 /* Conectar à nuvem: o código é digitado num campo do app (o painel/alguns navegadores não mostram prompt()) e conferido no Supabase antes de ser guardado */
-function pedeCodigo(e){if(e)e.stopPropagation();var m=document.getElementById('menu');m.classList.add('show');drawMenu();var i=document.getElementById('cod');if(i)i.focus()}
-function conecta(){var i=document.getElementById('cod'),c=i&&i.value.trim();if(!c){toast('Digite o código de acesso.');return}
-  setStatus('Conectando…');rpc('estudo_ler',{codigo:c}).then(function(){LS.setItem('estudo_codigo',c);document.getElementById('menu').classList.remove('show');toast('Conectado à nuvem. Sincronizando…');pull();if(view==='home')home()})
-   .catch(function(err){if(/codigo_invalido/.test(err.message)){setStatus('☁ Toque para conectar');toast('Código incorreto. Confira e tente de novo.')}else{setStatus('Offline');toast('Sem conexão com a nuvem agora. Tente de novo em instantes.')}})}
+/* Login: o site só abre com o código de acesso, conferido no Supabase (com a trava de tentativas).
+   O login fica guardado no aparelho até tocar em Sair (⚙). Sem Supabase configurado (cfgOk falso), não há tela de entrada. */
+function trancado(){return cfgOk()&&!LS.getItem('estudo_codigo')}
+function aplicaTrava(){var t=trancado();document.documentElement.classList.toggle('trancado',t);if(t){document.getElementById('menu').classList.remove('show');var i=document.getElementById('lgc');if(i&&matchMedia('(pointer:fine)').matches)setTimeout(function(){i.focus()},60)}}
+function entrar(){var i=document.getElementById('lgc'),c=i.value.trim(),msg=document.getElementById('lgm'),bt=document.getElementById('lgb');
+  if(!c){msg.textContent='Digite o código de acesso.';return}bt.disabled=true;bt.textContent='Entrando…';msg.textContent='';
+  rpc('estudo_ler',{codigo:c}).then(function(){LS.setItem('estudo_codigo',c);i.value='';aplicaTrava();go('home');pull();toast('Bem-vindo! Sincronizando seus dados…')})
+   .catch(function(e){msg.textContent=/codigo_invalido/.test(e.message)?'Código incorreto. Confira e tente de novo.':/bloqueado/.test(e.message)?'Muitas tentativas erradas. Por segurança, aguarde 15 minutos.':'Sem conexão com a internet. Tente de novo em instantes.';i.select()})
+   .then(function(){bt.disabled=false;bt.textContent='Entrar'})}
+function sair(){if(!confirm('Sair deste aparelho? Seus dados continuam guardados na nuvem.'))return;
+  var apaga=confirm('Apagar também a cópia dos dados guardada neste aparelho?\n\nRecomendado se o aparelho não for seu. (OK = apagar · Cancelar = manter)');
+  document.getElementById('menu').classList.remove('show');
+  (META.dirty?(push()||Promise.resolve()):Promise.resolve()).then(function(){
+    LS.removeItem('estudo_codigo');
+    if(!apaga)return;['estudo','estudo_meta','pos','ultimo_backup','versao_ativa'].forEach(function(k){LS.removeItem(k)});DATA=base();META={dirty:false};BKH=null;S.va=null;
+    return tx('meta','readonly',function(s){return s.getAll()}).then(function(ms){return Promise.all((ms||[]).filter(function(m){return !embutida(m.id)}).map(function(m){return apagaLocal(m.id)}))})
+      .then(function(){return tx('backup','readwrite',function(s){return s.clear()})}).catch(function(){})})
+   .then(function(){aplicaTrava();return loadMeta()}).then(function(){go('home');toast(apaga?'Você saiu e os dados deste aparelho foram apagados.':'Você saiu deste aparelho.')})}
 function rpc(fn,body){
   var h={'apikey':CONFIG.SUPABASE_KEY,'Content-Type':'application/json'};
   if(CONFIG.SUPABASE_KEY.indexOf('eyJ')===0)h['Authorization']='Bearer '+CONFIG.SUPABASE_KEY;
   return fetch(CONFIG.SUPABASE_URL.replace(/\/$/,'')+'/rest/v1/rpc/'+fn,{method:'POST',headers:h,body:JSON.stringify(body)})
-   .then(function(r){return r.text().then(function(t){var j=null;try{j=t?JSON.parse(t):null}catch(e){}if(!r.ok)throw new Error(j&&j.message||'erro');return j})})}
-function bad(e){if(/codigo_invalido/.test(e.message)){LS.removeItem('estudo_codigo');setStatus('☁ Toque para conectar');toast('O código de acesso não confere. Conecte de novo no ⚙.')}else setStatus('Offline — salvo neste aparelho')}
+   .then(function(r){return r.text().then(function(t){var j=null;try{j=t?JSON.parse(t):null}catch(e){}if(!r.ok)throw new Error(j&&j.message||'erro');
+     if(j&&typeof j==='object'&&!Array.isArray(j)&&j.erro)throw new Error(j.erro);return j})})}
+function bad(e){if(/codigo_invalido/.test(e.message)){LS.removeItem('estudo_codigo');aplicaTrava();document.getElementById('lgm').textContent='O código de acesso mudou. Entre com o código novo.'}
+  else if(/bloqueado/.test(e.message))setStatus('⏳ Nuvem pausada (15 min)');else setStatus('Offline — salvo neste aparelho')}
 function push(){if(!cfgOk())return;var c=code();if(!c)return;setStatus('Salvando…');
   return rpc('estudo_gravar',{codigo:c,novos:DATA}).then(function(){META.dirty=false;persistLocal();setStatus('☁ Sincronizado')}).catch(bad)}
 function pull(){
   if(!cfgOk()){setStatus('Somente local');return}
-  var c=code();if(!c){setStatus('☁ Toque para conectar');return}
+  var c=code();if(!c){setStatus('Não conectado');aplicaTrava();return}
   if(META.dirty){push().then(syncVers);return}
   rpc('estudo_ler',{codigo:c}).then(function(r){
     var d=r.dados||{},has=d.notes||d.esbocos||d.ebd;
@@ -247,9 +285,7 @@ function drawMenu(){var t=tema();document.getElementById('menu').innerHTML='<spa
   '<span class="lb">Dados (backup)</span><button class="btn ghost mb" onclick="exportar()">💾 Exportar dados</button><button class="btn ghost mb" onclick="document.getElementById(\'bkf\').click()">📂 Importar backup</button><input id="bkf" type="file" accept=".json,application/json" style="display:none" onchange="importar(this)">'+
   '<p class="tag" style="margin:0">Aceita também o backup do app antigo (“Estudo Bíblico offline”).</p>'+menuBackup()+
   '<span class="lb" style="margin-top:12px">Sobre e créditos</span>'+(S.mcred?'<div id="mcred" class="tag" style="line-height:1.5;margin-bottom:6px"><b style="color:var(--ink)">'+esc(JFAAL.completo)+' (JFAAL)</b><br>'+credCompleto()+'</div>':'<button class="btn ghost mb" onclick="S.mcred=true;drawMenu()">ℹ Versão JFAAL — créditos e licença</button>')+
-  (!cfgOk()?'':LS.getItem('estudo_codigo')?'<span class="lb" style="margin-top:12px">Nuvem</span><p class="tag" style="margin:0 0 6px">☁ Conectado: seus dados e versões ficam guardados na nuvem.</p><button class="btn ghost mb" onclick="trocaCodigo()">🔑 Desconectar / trocar código</button>':
-   '<span class="lb" style="margin-top:12px">Conectar à nuvem</span><p class="tag" style="margin:0 0 6px">Digite o código de acesso que você definiu no Supabase.</p><div class="row" style="flex-wrap:nowrap"><input id="cod" type="password" autocomplete="current-password" placeholder="Código de acesso" onkeydown="if(event.key===\'Enter\')conecta()" style="flex:1;min-width:0;margin:0"><button class="btn" onclick="conecta()">Conectar</button></div>')}
-function trocaCodigo(){if(!confirm('Desconectar este aparelho da nuvem? Os dados continuam salvos na nuvem e aqui.'))return;LS.removeItem('estudo_codigo');setStatus('☁ Toque para conectar');drawMenu()}
+  (cfgOk()&&LS.getItem('estudo_codigo')?'<span class="lb" style="margin-top:12px">Conta</span><p class="tag" style="margin:0 0 6px">☁ Conectado: seus dados e versões ficam guardados na nuvem.</p><button class="btn ghost mb danger" onclick="sair()">🚪 Sair deste aparelho</button>':'')}
 function saveBlob(b,fn){var u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=fn;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u)},4000)}
 function bkPayload(){var p={app:'estudo',versao:2,exportado:new Date().toISOString(),dados:DATA,prefs:{}};
   ['tema','leitura','esboco_prefs'].forEach(function(k){var x=LS.getItem(k);if(x!=null)p.prefs[k]=x});return p}
@@ -374,7 +410,6 @@ function home(){
   function feat(ic,hue,sm,t,extra,js){return '<button class="feat" onclick="'+js+'"><div class="ic" style="--hue:'+hue+'">'+ic+'</div><div class="fx"><small>'+esc(sm)+'</small><b>'+esc(t)+'</b>'+extra+'</div><span class="chev">›</span></button>'}  if(p&&ALL[p.b])c.push(feat('📖','var(--acc)','Continuar lendo',ALL[p.b][0]+' '+p.c,'<div class="bar"><div style="width:'+Math.round(p.c*100/ALL[p.b][1])+'%"></div></div>','continuar()'));
   if(nx)c.push(feat('🎓','#8a63c9',nx.quando,nx.titulo,'<span class="tag">'+esc(nx.sub)+'</span>',"go('ebd');openAula('"+nx.id+"',"+nx.k+")"));
   app.innerHTML='<section class="hero"><div class="hdate">'+esc(dt)+'</div><div class="htitle">'+g+'</div><p class="hsub">Que a Palavra guie o seu estudo hoje.</p><div class="vod" id="vd"></div></section>'+
-  (cfgOk()&&!LS.getItem('estudo_codigo')?'<button class="feat" style="margin-top:14px;border-color:var(--acc)" onclick="pedeCodigo(event)"><div class="ic">☁</div><div class="fx"><small>Proteja seus dados</small><b>Conectar à nuvem</b><span class="tag">Digite seu código de acesso uma vez neste aparelho.</span></div><span class="chev">›</span></button>':'')+
   (c.length?sec('Continuar')+'<div class="g2">'+c.join('')+'</div>':'')+
   (pl.length?sec('Leitura de hoje')+'<div class="g2">'+pl.map(function(x){return '<div class="plan"><div class="ring" style="--p:'+x.pct+'"><span>'+x.pct+'%</span></div><div class="fx" onclick="S.bt=\'plano\';S.pid=\''+x.id+'\';S.pday=null;S.novo=false;go(\'biblia\')"><small>'+esc(x.nome)+' · dia '+x.d+' de '+x.N+'</small><b>'+esc(x.t)+'</b></div><button class="chk'+(x.ok?' on':'')+'" title="'+(x.ok?'Lido — desmarcar':'Marcar como lido')+'" onclick="togHoje(\''+x.id+'\','+x.d+')">✓</button></div>'}).join('')+'</div>':'');
   fillVd();
@@ -1090,6 +1125,7 @@ function paintPane(i){var p=S.panes[i],box=document.getElementById('pnt'+i),c=lc
 function paintPanes(){(S.panes||[]).forEach(function(p,i){paintPane(i)})}
 panesLoad();
 bkIniciar();
+aplicaTrava();
 render('home');
 loadMeta().then(instalaJfaal);
 if('serviceWorker' in navigator&&location.protocol.indexOf('http')===0)window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){})});
