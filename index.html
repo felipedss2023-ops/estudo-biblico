@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Estudo Bíblico</title>
+<meta name="theme-color" content="#1C2333">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Estudo">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>/* Aberto como arquivo (file:/data:) o app não guarda dados nem sincroniza: vai para o servidor de teste local */
+if(!/^https?:$/.test(location.protocol))location.replace('http://localhost:8080/');</script>
+<script>try{var t0=localStorage.getItem('tema');if(t0&&t0!=='auto')document.documentElement.setAttribute('data-theme',t0)}catch(e){}</script>
+<style>
+:root{--bg:#FAF6EC;--card:#FFFDF7;--bg2:#F1EAD8;--ink:#2B2620;--mute:#6b6455;--line:#DDD3BC;--acc:#A9812F;--acc2:#cba658;--onacc:#201803;--cover:#1C2333;--cover2:#262f45;--onc:#EFE7D0;--onc2:#b9b19a;--bad:#7A2E2E;--ok:#3d6b4f;--sh:0 1px 2px rgba(28,35,51,.05),0 4px 14px rgba(28,35,51,.06);--serif:Lora,Georgia,'Times New Roman',serif;--sans:'Work Sans',-apple-system,'Segoe UI',Roboto,sans-serif;color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme]){--bg:#171A22;--card:#1E222D;--bg2:#262b38;--ink:#E7E2D3;--mute:#9A9484;--line:#333a4a;--acc:#c29a45;--acc2:#cba658;--onacc:#1a1406;--cover:#0F131C;--cover2:#171E2C;--bad:#d58f8f;--ok:#7fbf98;--sh:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#171A22;--card:#1E222D;--bg2:#262b38;--ink:#E7E2D3;--mute:#9A9484;--line:#333a4a;--acc:#c29a45;--acc2:#cba658;--onacc:#1a1406;--cover:#0F131C;--cover2:#171E2C;--bad:#d58f8f;--ok:#7fbf98;--sh:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25);color-scheme:dark}
+:root[data-theme="sepia"]{--bg:#F4ECD8;--card:#F9F2E2;--bg2:#EADFC0;--ink:#4B3621;--mute:#8a7455;--line:#ddcda0;--acc:#8a6a2f;--acc2:#a5813f;--onacc:#fff8e8;--cover:#3b2f1e;--cover2:#4a3c26;--bad:#8a3a2a}
+:root[data-theme="oled"]{--bg:#000;--card:#0a0a0a;--bg2:#141414;--ink:#e8e8e8;--mute:#999;--line:#222;--acc:#b8902f;--acc2:#cba658;--onacc:#1a1406;--cover:#000;--cover2:#050505;--bad:#d58f8f;--ok:#7fbf98;--sh:none;color-scheme:dark}
+html{scroll-padding-top:80px}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px}
+main{padding-top:14px}
+header.top{position:sticky;top:0;z-index:7;background:linear-gradient(180deg,var(--cover),var(--cover2));color:var(--onc);padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) 0 env(safe-area-inset-left,0px)}
+.hd{display:flex;align-items:center;gap:10px;padding-top:11px;padding-bottom:11px}
+.logo{flex:1;font-family:var(--serif);font-size:1.3rem;cursor:pointer;letter-spacing:.2px;white-space:nowrap}.logo em{color:var(--acc2)}
+.sync{font-size:.75rem;color:var(--onc2);text-align:right}
+.hbtn{background:transparent;border:1px solid #3a415a;color:var(--onc);border-radius:999px;width:36px;height:36px;font-size:1rem;cursor:pointer;flex:none}
+.hbtn:hover{border-color:var(--acc2)}
+.smenu{display:none;position:fixed;right:12px;top:calc(62px + env(safe-area-inset-top,0px));z-index:9;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.3);padding:12px;width:min(310px,calc(100vw - 24px))}
+.smenu.show{display:block}
+.smenu .lb{display:block;font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--mute);font-weight:700;margin:4px 0 6px}
+.smenu .mb{display:block;width:100%;text-align:left;margin:0 0 6px}
+button,input,textarea,select{font:inherit;color:inherit}
+.btn{background:var(--acc);color:var(--onacc);border:1px solid var(--acc);border-radius:8px;padding:8px 14px;font-weight:600;cursor:pointer;font-size:.9rem;transition:transform .12s,background .12s,border-color .12s}
+.btn:hover{background:var(--acc2);border-color:var(--acc2)}.btn:active{transform:scale(.97)}
+.btn:disabled{opacity:.4;cursor:default}
+.ghost{background:transparent;color:var(--ink);border:1px solid var(--line);font-weight:500}
+.ghost:hover{background:transparent;border-color:var(--acc)}
+.danger{color:var(--bad)}.danger:hover{border-color:var(--bad)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:12px;box-shadow:var(--sh)}
+h3{margin:.1em 0 .7em;font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--mute);font-weight:700}
+.books{display:flex;flex-wrap:wrap;gap:7px}
+.chip{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 13px;cursor:pointer;font-size:.86rem;font-weight:500;user-select:none;transition:all .12s}
+.chip:hover{border-color:var(--acc)}.chip.on{background:var(--acc);color:var(--onacc);border-color:var(--acc);font-weight:600}
+.chip.sm{padding:3px 9px;font-size:.78rem}
+.nums{display:grid;grid-template-columns:repeat(auto-fill,minmax(46px,1fr));gap:7px}.nums .chip{text-align:center;border-radius:12px;padding:8px 0}
+input,textarea,select{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:9px 11px;margin:4px 0;outline:none;transition:border-color .12s}
+input:focus,textarea:focus,select:focus,.rte:focus{border-color:var(--acc);box-shadow:0 0 0 2px color-mix(in srgb,var(--acc) 25%,transparent)}
+input[type=checkbox]{width:auto;margin:0 6px 0 0;accent-color:var(--acc)}
+input[type=range]{accent-color:var(--acc);padding:0;border:0;background:none;box-shadow:none}
+textarea{min-height:110px;resize:vertical}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.item{display:flex;justify-content:space-between;gap:8px;align-items:center;padding:12px 4px;border-bottom:1px solid var(--line);cursor:pointer}
+.item:last-child{border-bottom:0}
+.item small,.tag{color:var(--mute);font-size:.82rem}
+.lbl{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--mute);font-weight:600;margin:10px 0 0}
+.ch{display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
+.ct{font-family:var(--serif);font-size:1.08rem;font-weight:600}
+.cref{color:var(--acc);font-weight:600;font-size:.85rem}
+.cc{font-size:.92rem;margin-top:6px;overflow-wrap:anywhere}
+.ca{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.ca .btn{padding:6px 11px;font-size:.84rem}
+.vauto{font-family:var(--serif);font-style:italic;font-size:.88rem;color:var(--mute);margin:3px 0;line-height:1.45}
+.vauto:empty{display:none}
+.pprev{margin-top:6px;font-size:.92rem}
+.lic{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:10px;box-shadow:var(--sh)}
+.lic.hoje{border-color:var(--acc);box-shadow:0 0 0 2px color-mix(in srgb,var(--acc) 22%,transparent)}
+.lich{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin-bottom:2px}
+.licn{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--acc)}
+.licd{font-size:.8rem;color:var(--mute)}.licok{margin-left:auto;font-size:.75rem;color:var(--ok);font-weight:600}
+.bar{background:var(--bg2);border-radius:99px;height:9px;overflow:hidden}.bar div{background:var(--acc);height:9px;border-radius:99px}
+/* editor com formatação */
+.rtebar{display:flex;gap:5px;align-items:center;flex-wrap:wrap;position:sticky;top:calc(58px + env(safe-area-inset-top,0px));z-index:3;background:var(--card);padding:6px 0;border-bottom:1px solid var(--line);margin-bottom:4px}
+.rtebar .btn{padding:4px 10px;min-width:34px}
+.rtebar input[type=color]{width:36px;height:32px;padding:2px;margin:0;cursor:pointer}
+.rte{min-height:90px;border:1px solid var(--line);border-radius:8px;padding:9px 11px;margin:4px 0;background:var(--bg);outline:none;line-height:1.55;overflow-wrap:anywhere}
+.rte.sm{min-height:46px}
+.rte:empty:before{content:attr(data-ph);color:var(--mute)}
+.rt b,.rt strong{font-weight:700}
+.pt{display:flex;gap:6px;align-items:flex-start;border:1px solid var(--line);border-radius:8px;padding:8px;background:var(--bg2);margin:6px 0}
+.pn{font-family:var(--serif);color:var(--acc);min-width:20px;padding-top:12px;text-align:right}
+.pf{flex:1;min-width:0}.pf input{margin:2px 0}.pf .pr{font-size:.82rem;padding:6px 9px}
+/* início */
+.hero{position:relative;overflow:hidden;border-radius:22px;padding:26px 22px 22px;margin:4px 0 6px;background:linear-gradient(145deg,var(--cover2),var(--cover));color:var(--onc);border:1px solid rgba(255,255,255,.07);box-shadow:0 18px 40px -18px rgba(28,35,51,.6)}
+.hero:before{content:'';position:absolute;right:-90px;top:-110px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(203,166,88,.32),transparent 65%);pointer-events:none}
+.hero:after{content:'';position:absolute;left:-70px;bottom:-130px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(120,140,200,.16),transparent 65%);pointer-events:none}
+.hero>*{position:relative}
+.hdate{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--acc2);font-weight:600}
+.htitle{font-family:var(--serif);font-size:clamp(1.9rem,6vw,2.5rem);line-height:1.1;margin:6px 0 4px}
+.hsub{margin:0 0 18px;color:var(--onc2);font-size:.92rem}
+.vod{min-height:150px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:16px 20px 14px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.vodr{display:flex;align-items:center;gap:8px;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--onc2);font-weight:600;margin-bottom:4px}
+.vodr:before{content:'';width:18px;height:2px;background:var(--acc2);border-radius:2px}
+.vodt{font-family:var(--serif);font-size:clamp(1.12rem,3.6vw,1.35rem);line-height:1.55;color:#F6F0DF}
+.vodt:before{content:'“';display:block;font-size:2.8em;line-height:1;height:.5em;color:var(--acc2)}
+.vodf{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:14px}
+.vodf b{color:var(--acc2);font-size:.9rem}.vodf small{color:var(--onc2);font-size:.78rem}
+.pill{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:var(--onc);border-radius:999px;padding:6px 13px;font-size:.78rem;cursor:pointer;transition:border-color .15s,background .15s}
+.pill:hover{border-color:var(--acc2);background:rgba(203,166,88,.12)}
+.sec{margin:24px 2px 10px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);font-weight:700}
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.feat,.plan{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--sh);color:var(--ink);transition:transform .15s,border-color .15s}
+.feat{display:flex;gap:14px;align-items:center;padding:16px;cursor:pointer;text-align:left;width:100%}
+.feat:hover{transform:translateY(-2px);border-color:var(--acc)}
+.ic{width:46px;height:46px;flex:none;border-radius:14px;display:grid;place-items:center;font-size:1.35rem;background:color-mix(in srgb,var(--hue,var(--acc)) 18%,transparent)}
+.fx{flex:1;min-width:0}
+.feat small,.plan small{display:block;color:var(--mute);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+.feat b,.plan b{display:block;font-family:var(--serif);font-size:1.08rem;font-weight:600;margin:1px 0 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.feat .bar,.feat .bar div{height:6px}
+.chev{color:var(--mute);font-size:1.4rem;line-height:1}
+.plan{display:flex;gap:14px;align-items:center;padding:14px 16px}
+.plan .fx{cursor:pointer}.plan b{margin-bottom:0;white-space:normal}
+.ring{width:50px;height:50px;flex:none;border-radius:50%;background:conic-gradient(var(--acc) calc(var(--p)*1%),var(--bg2) 0);display:grid;place-items:center}
+.ring span{width:40px;height:40px;border-radius:50%;background:var(--card);display:grid;place-items:center;font-size:.7rem;font-weight:700}
+.chk{width:40px;height:40px;flex:none;border-radius:50%;border:2px solid var(--line);background:transparent;color:var(--mute);cursor:pointer;font-size:1rem;font-weight:700;transition:all .15s}
+.chk:hover{border-color:var(--ok);color:var(--ok)}.chk.on{background:var(--ok);border-color:var(--ok);color:#fff}/* leitura */
+#txt{font-family:var(--serif)}
+.vr{margin:.1em 0;padding:4px 6px;border-radius:6px;cursor:pointer}
+.vr:hover{background:var(--bg2)}
+.vr.sel{background:var(--bg2);box-shadow:inset 3px 0 0 var(--acc)}
+.vn{font-family:var(--serif);color:var(--acc);font-size:.72em;font-weight:600;margin-right:2px}
+.mk{font-size:.68em}
+.par .vr{display:inline;padding:1px 0;margin:0}.par .vn{vertical-align:super;font-size:.6em}
+.vhl{background:color-mix(in srgb,var(--acc2) 30%,transparent)!important}
+.selbar{display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(76px + env(safe-area-inset-bottom,0px));z-index:6;width:min(860px,calc(100vw - 24px));background:var(--acc);color:var(--onacc);padding:8px 10px;border-radius:12px;gap:6px;align-items:center;flex-wrap:wrap;font-size:.86rem;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.selbar.show{display:flex}.selbar span{flex:1;min-width:110px}
+.selbar button{background:#201803;color:#f2e6c8;border:0;border-radius:7px;padding:6px 10px;font-size:.82rem;cursor:pointer}
+.bres{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:8px;cursor:pointer;box-shadow:var(--sh);transition:border-color .15s}
+.bres:hover{border-color:var(--acc)}.bres .bt{font-family:var(--serif);margin-top:2px;line-height:1.55}
+mark{background:color-mix(in srgb,var(--acc2) 45%,transparent);color:inherit;border-radius:3px;padding:0 1px}
+.pdia{display:flex;gap:12px;align-items:center;padding:10px 6px;border-bottom:1px solid var(--line);border-radius:10px}
+.pdia:last-child{border-bottom:0}.pdia.hoje{background:color-mix(in srgb,var(--acc) 12%,transparent)}
+.pdia .chk{width:34px;height:34px;font-size:.9rem}.pdia.lido .fx{opacity:.5}
+.pdia .fx{cursor:pointer;min-width:0}.pdia small{display:block;color:var(--mute);font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+.pdia b{font-family:var(--serif);font-weight:600}.atr{color:var(--bad)}
+.pdia.flash{animation:pfl 1.6s ease}@keyframes pfl{0%,60%{box-shadow:0 0 0 2px var(--acc)}100%{box-shadow:0 0 0 0 transparent}}
+.lv{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px;max-height:190px;overflow:auto}
+.panes{display:grid;grid-template-columns:repeat(var(--n),minmax(280px,1fr));gap:12px;overflow-x:auto;padding-bottom:6px}
+.pane{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:var(--sh);min-width:0}
+.panehd{background:var(--bg2);padding:8px}.panehd select,.panehd input{margin:3px 0}
+.panetx{font-family:var(--serif);padding:12px 14px;max-height:70vh;overflow:auto}
+/* barra inferior */
+#nav{position:fixed;left:0;right:0;bottom:0;z-index:6;display:flex;justify-content:center;gap:4px;padding:8px calc(12px + env(safe-area-inset-right,0px)) calc(8px + env(safe-area-inset-bottom,0px)) calc(12px + env(safe-area-inset-left,0px));background:var(--cover);border-top:1px solid #333c54}
+#nav button{flex:1;max-width:120px;background:none;border:0;border-radius:12px;padding:6px 4px;font-size:.72rem;font-weight:600;color:var(--onc2);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px}
+#nav button span{font-size:1.2rem}#nav button.on{color:var(--acc2);background:rgba(203,166,88,.14)}
+#toast{position:fixed;left:50%;bottom:calc(140px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);max-width:90vw;background:var(--cover);color:var(--onc);padding:10px 18px;border-radius:999px;font-size:.86rem;opacity:0;pointer-events:none;transition:all .25s;z-index:60;text-align:center}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+/* apresentação */
+.pres{position:fixed;inset:0;background:var(--cover);z-index:50;display:none;flex-direction:column;color:#EFE7D0;padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px)}
+.pres.show{display:flex}
+.ptop{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;font-size:.84rem;color:#b9b19a}
+.pclose{background:transparent;border:0;color:#EFE7D0;font-size:1rem;padding:6px 10px;border-radius:8px;cursor:pointer}.pclose:hover{background:rgba(255,255,255,.08)}
+.pbody{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:safe center;text-align:center;padding:16px clamp(18px,6vw,60px);overflow-y:auto}
+.pe{font-size:calc(15px * var(--eb-scale,1));letter-spacing:.08em;text-transform:uppercase;color:#cba658;margin-bottom:18px}
+.ph{font-family:var(--eb-font,var(--serif));font-size:calc(clamp(28px,6vw,44px) * var(--eb-scale,1));font-weight:600;margin-bottom:20px;line-height:1.2}
+.pr2{font-size:calc(18px * var(--eb-scale,1));color:#cba658;margin-bottom:20px}
+.ptx{font-family:var(--eb-font,var(--serif));font-size:calc(clamp(19px,3.4vw,24px) * var(--eb-scale,1));line-height:1.6;max-width:900px}
+.pv2{font-family:var(--serif);font-style:italic;font-size:calc(clamp(17px,2.8vw,20px) * var(--eb-scale,1));color:#d8cfb4;max-width:850px;margin-top:24px;line-height:1.55}
+.pbot{display:flex;justify-content:center;gap:16px;padding:16px}
+.pbot button{background:transparent;border:1px solid #3a415a;color:#EFE7D0;border-radius:999px;padding:9px 20px;font-size:.88rem;cursor:pointer}
+.pbot button:hover{border-color:#cba658}.pbot button:disabled{opacity:.35;cursor:default}
+/* prévia do PDF */
+#pv{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:40;padding:calc(12px + env(safe-area-inset-top,0px)) 12px calc(12px + env(safe-area-inset-bottom,0px));align-items:center;justify-content:center}
+#pv.show{display:flex}
+.pvbox{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;width:min(860px,100%);height:100%;display:flex;flex-direction:column}
+.pvp{flex:1;overflow:auto;background:#5b5b5b;border-radius:8px;padding:12px;display:flex;flex-direction:column;align-items:center;gap:12px}
+.pvp canvas{max-width:100%;height:auto!important;box-shadow:0 2px 10px rgba(0,0,0,.4);background:#fff}
+::-webkit-scrollbar{width:9px;height:9px}::-webkit-scrollbar-thumb{background:var(--line);border-radius:99px}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap hd">
+  <button id="voltar" class="hbtn" onclick="voltar()" title="Voltar" style="display:none">←</button>
+  <div class="logo" onclick="go('home')">Estudo <em>Bíblico</em></div>
+  <span id="sync" class="sync" onclick="if(cfgOk()&&!LS.getItem('estudo_codigo'))pedeCodigo(event)" style="cursor:pointer">Somente local</span>
+  <button class="hbtn" onclick="togMenu(event)" title="Configurações" style="position:relative">⚙<span id="bkdot" title="Backup precisa de atenção" style="display:none;position:absolute;top:3px;right:3px;width:8px;height:8px;border-radius:50%;background:var(--acc2)"></span></button>
+</div></header>
+<div id="menu" class="smenu" onclick="event.stopPropagation()"></div>
+<div class="wrap"><main id="app"></main></div>
+<nav id="nav"><button data-v="home" onclick="go('home')"><span>🏠</span>Início</button><button data-v="biblia" onclick="go('biblia')"><span>📖</span>Bíblia</button><button data-v="esboco" onclick="go('esboco')"><span>📋</span>Esboço</button><button data-v="ebd" onclick="go('ebd')"><span>🎓</span>EBD</button></nav>
+<div id="pres" class="pres"><div class="ptop"><span id="prc"></span><button class="pclose" onclick="presClose()">✕ Sair</button></div><div class="pbody" id="prb"></div><div class="pbot"><button id="prp" onclick="presGo(-1)">← Anterior</button><button id="prn" onclick="presGo(1)">Próximo →</button></div></div>
+<div id="pv"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="config.js"></script>
+<script>
+/* localStorage pode estar bloqueado (ex.: arquivo aberto direto, navegação privada): nesse caso guarda em memória */
+var LS=(function(){try{var s=window.localStorage;s.getItem('x');return s}catch(e){var m={};return{getItem:function(k){return k in m?m[k]:null},setItem:function(k,v){m[k]=String(v)},removeItem:function(k){delete m[k]}}}})();
+function toast(m){var t=document.getElementById('toast');if(!t){t=document.createElement('div');t.id='toast';document.body.appendChild(t)}t.textContent=m;t.className='show';clearTimeout(t._h);t._h=setTimeout(function(){t.className=''},4000)}
+window.addEventListener('error',function(e){console.error(e.error||e.message);toast('Algo deu errado. Se persistir, recarregue a página.')});
+window.addEventListener('unhandledrejection',function(e){console.error(e.reason);toast('Não foi possível concluir a operação.')});
+var OT=[["Gênesis",50],["Êxodo",40],["Levítico",27],["Números",36],["Deuteronômio",34],["Josué",24],["Juízes",21],["Rute",4],["1 Samuel",31],["2 Samuel",24],["1 Reis",22],["2 Reis",25],["1 Crônicas",29],["2 Crônicas",36],["Esdras",10],["Neemias",13],["Ester",10],["Jó",42],["Salmos",150],["Provérbios",31],["Eclesiastes",12],["Cantares",8],["Isaías",66],["Jeremias",52],["Lamentações",5],["Ezequiel",48],["Daniel",12],["Oseias",14],["Joel",3],["Amós",9],["Obadias",1],["Jonas",4],["Miqueias",7],["Naum",3],["Habacuque",3],["Sofonias",3],["Ageu",2],["Zacarias",14],["Malaquias",4]];
+var NT=[["Mateus",28],["Marcos",16],["Lucas",24],["João",21],["Atos",28],["Romanos",16],["1 Coríntios",16],["2 Coríntios",13],["Gálatas",6],["Efésios",6],["Filipenses",4],["Colossenses",4],["1 Tessalonicenses",5],["2 Tessalonicenses",3],["1 Timóteo",6],["2 Timóteo",4],["Tito",3],["Filemom",1],["Hebreus",13],["Tiago",5],["1 Pedro",5],["2 Pedro",3],["1 João",5],["2 João",1],["3 João",1],["Judas",1],["Apocalipse",22]];
+var ALL=OT.concat(NT);
+var app=document.getElementById('app');
+var S={book:null,chap:null,edit:null};
+
+function base(){return{notes:{},esbocos:[],ebd:[],fav:[],anot:[],plano:{},planos:[],trim:{},vdel:[],marc:[],saud:[],ebdprof:{},ebdtri:[],ebdocul:[]}}
+var DATA=base(),META={dirty:false},tm=null;
+try{var raw=JSON.parse(LS.getItem('estudo'));if(raw)DATA=Object.assign(DATA,raw);var m=JSON.parse(LS.getItem('estudo_meta'));if(m)META=m}catch(e){}
+function persistLocal(){try{LS.setItem('estudo',JSON.stringify(DATA));LS.setItem('estudo_meta',JSON.stringify(META))}catch(e){}}
+function load(k){return DATA[k]}
+function save(k,v){DATA[k]=v;META.dirty=true;persistLocal();clearTimeout(tm);tm=setTimeout(push,600);agendaBackup()}
+function setStatus(t){document.getElementById('sync').textContent=t}
+function cfgOk(){return typeof CONFIG!=='undefined'&&CONFIG.SUPABASE_URL.indexOf('http')===0&&CONFIG.SUPABASE_KEY.length>20}
+function code(){return LS.getItem('estudo_codigo')}
+/* Conectar à nuvem: o código é digitado num campo do app (o painel/alguns navegadores não mostram prompt()) e conferido no Supabase antes de ser guardado */
+function pedeCodigo(e){if(e)e.stopPropagation();var m=document.getElementById('menu');m.classList.add('show');drawMenu();var i=document.getElementById('cod');if(i)i.focus()}
+function conecta(){var i=document.getElementById('cod'),c=i&&i.value.trim();if(!c){toast('Digite o código de acesso.');return}
+  setStatus('Conectando…');rpc('estudo_ler',{codigo:c}).then(function(){LS.setItem('estudo_codigo',c);document.getElementById('menu').classList.remove('show');toast('Conectado à nuvem. Sincronizando…');pull();if(view==='home')home()})
+   .catch(function(err){if(/codigo_invalido/.test(err.message)){setStatus('☁ Toque para conectar');toast('Código incorreto. Confira e tente de novo.')}else{setStatus('Offline');toast('Sem conexão com a nuvem agora. Tente de novo em instantes.')}})}
+function rpc(fn,body){
+  var h={'apikey':CONFIG.SUPABASE_KEY,'Content-Type':'application/json'};
+  if(CONFIG.SUPABASE_KEY.indexOf('eyJ')===0)h['Authorization']='Bearer '+CONFIG.SUPABASE_KEY;
+  return fetch(CONFIG.SUPABASE_URL.replace(/\/$/,'')+'/rest/v1/rpc/'+fn,{method:'POST',headers:h,body:JSON.stringify(body)})
+   .then(function(r){return r.text().then(function(t){var j=null;try{j=t?JSON.parse(t):null}catch(e){}if(!r.ok)throw new Error(j&&j.message||'erro');return j})})}
+function bad(e){if(/codigo_invalido/.test(e.message)){LS.removeItem('estudo_codigo');setStatus('☁ Toque para conectar');toast('O código de acesso não confere. Conecte de novo no ⚙.')}else setStatus('Offline — salvo neste aparelho')}
+function push(){if(!cfgOk())return;var c=code();if(!c)return;setStatus('Salvando…');
+  return rpc('estudo_gravar',{codigo:c,novos:DATA}).then(function(){META.dirty=false;persistLocal();setStatus('☁ Sincronizado')}).catch(bad)}
+function pull(){
+  if(!cfgOk()){setStatus('Somente local');return}
+  var c=code();if(!c){setStatus('☁ Toque para conectar');return}
+  if(META.dirty){push().then(syncVers);return}
+  rpc('estudo_ler',{codigo:c}).then(function(r){
+    var d=r.dados||{},has=d.notes||d.esbocos||d.ebd;
+    if(has){var old=JSON.stringify(DATA);DATA=Object.assign(base(),d);persistLocal();if(old!==JSON.stringify(DATA))agendaBackup();
+      var a=document.activeElement;if(old!==JSON.stringify(DATA)&&S.edit===null&&!S.novo&&!S.ed&&!(a&&(/INPUT|TEXTAREA|SELECT/.test(a.tagName)||a.isContentEditable)))render()}
+    else if(DATA.esbocos.length||DATA.ebd.length||Object.keys(DATA.notes).length){push().then(syncVers);return}
+    setStatus('☁ Sincronizado');syncVers()}).catch(bad)}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+
+/* Tema, menu de configurações e backup */
+function tema(){try{return LS.getItem('tema')||'auto'}catch(e){return 'auto'}}
+function aplicaTema(){var t=tema(),r=document.documentElement;if(t==='auto')r.removeAttribute('data-theme');else r.setAttribute('data-theme',t)}
+function setTema(t){try{LS.setItem('tema',t)}catch(e){}aplicaTema();drawMenu()}
+function togMenu(e){e.stopPropagation();var m=document.getElementById('menu');if(m.classList.toggle('show'))drawMenu()}
+document.addEventListener('click',function(){document.getElementById('menu').classList.remove('show')});
+function drawMenu(){var t=tema();document.getElementById('menu').innerHTML='<span class="lb">Tema</span><div class="books" style="margin-bottom:12px">'+
+  [['auto','Automático'],['light','Claro'],['sepia','Sépia'],['dark','Escuro'],['oled','OLED preto']].map(function(x){return '<div class="chip sm'+(t===x[0]?' on':'')+'" onclick="setTema(\''+x[0]+'\')">'+x[1]+'</div>'}).join('')+'</div>'+
+  '<span class="lb">Dados (backup)</span><button class="btn ghost mb" onclick="exportar()">💾 Exportar dados</button><button class="btn ghost mb" onclick="document.getElementById(\'bkf\').click()">📂 Importar backup</button><input id="bkf" type="file" accept=".json,application/json" style="display:none" onchange="importar(this)">'+
+  '<p class="tag" style="margin:0">Aceita também o backup do app antigo (“Estudo Bíblico offline”).</p>'+menuBackup()+
+  '<span class="lb" style="margin-top:12px">Sobre e créditos</span>'+(S.mcred?'<div id="mcred" class="tag" style="line-height:1.5;margin-bottom:6px"><b style="color:var(--ink)">'+esc(JFAAL.completo)+' (JFAAL)</b><br>'+credCompleto()+'</div>':'<button class="btn ghost mb" onclick="S.mcred=true;drawMenu()">ℹ Versão JFAAL — créditos e licença</button>')+
+  (!cfgOk()?'':LS.getItem('estudo_codigo')?'<span class="lb" style="margin-top:12px">Nuvem</span><p class="tag" style="margin:0 0 6px">☁ Conectado: seus dados e versões ficam guardados na nuvem.</p><button class="btn ghost mb" onclick="trocaCodigo()">🔑 Desconectar / trocar código</button>':
+   '<span class="lb" style="margin-top:12px">Conectar à nuvem</span><p class="tag" style="margin:0 0 6px">Digite o código de acesso que você definiu no Supabase.</p><div class="row" style="flex-wrap:nowrap"><input id="cod" type="password" autocomplete="current-password" placeholder="Código de acesso" onkeydown="if(event.key===\'Enter\')conecta()" style="flex:1;min-width:0;margin:0"><button class="btn" onclick="conecta()">Conectar</button></div>')}
+function trocaCodigo(){if(!confirm('Desconectar este aparelho da nuvem? Os dados continuam salvos na nuvem e aqui.'))return;LS.removeItem('estudo_codigo');setStatus('☁ Toque para conectar');drawMenu()}
+function saveBlob(b,fn){var u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=fn;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u)},4000)}
+function bkPayload(){var p={app:'estudo',versao:2,exportado:new Date().toISOString(),dados:DATA,prefs:{}};
+  ['tema','leitura','esboco_prefs'].forEach(function(k){var x=LS.getItem(k);if(x!=null)p.prefs[k]=x});return p}
+function exportar(){saveBlob(new Blob([JSON.stringify(bkPayload())],{type:'application/json'}),'estudo-biblico-backup-'+iso(new Date())+'.json');LS.setItem('ultimo_backup',new Date().toISOString());
+  toast('Backup exportado (as versões da Bíblia não entram no backup).');bkPonto();drawMenu()}
+
+/* Backup automático, independente da nuvem:
+   (1) arquivo escolhido pelo usuário (Chrome/Edge no computador), regravado ~3 s depois de cada alteração;
+   (2) uma cópia por dia guardada no próprio aparelho (IndexedDB, últimos 14 dias), que pode ser restaurada. */
+var BKH=null,BKT=null,BKST='',FSOK=typeof window.showSaveFilePicker==='function';
+function bkGet(k){return tx('backup','readonly',function(s){return s.get(k)}).then(function(r){return r?r.v:null}).catch(function(){return null})}
+function bkPut(k,v){return tx('backup','readwrite',function(s){return s.put({id:k,v:v})}).catch(function(){})}
+function bkDel(k){return tx('backup','readwrite',function(s){return s.delete(k)}).catch(function(){})}
+function temDados(){var D=DATA;return !!(D.esbocos.length||D.ebd.length||D.anot.length||D.marc.length||D.saud.length||(D.planos||[]).length||(D.ebdtri||[]).length||Object.keys(D.notes||{}).length||Object.keys(D.ebdprof||{}).length||(D.plano&&D.plano.inicio))}
+function agendaBackup(){clearTimeout(BKT);BKT=setTimeout(fazBackup,3000)}
+function fazBackup(){var p=bkPayload();if(temDados())bkPut('snap-'+iso(new Date()),p).then(limpaSnaps);
+  if(!BKH)return Promise.resolve();
+  return BKH.queryPermission({mode:'readwrite'}).then(function(st){if(st!=='granted'){BKST='pausado';return}
+    return BKH.createWritable().then(function(w){return w.write(JSON.stringify(p,null,1)).then(function(){return w.close()})}).then(function(){LS.setItem('ultimo_backup',new Date().toISOString());BKST='ok'})}).catch(function(){BKST='erro'}).then(bkPonto)}
+function limpaSnaps(){return tx('backup','readonly',function(s){return s.getAllKeys()}).then(function(ks){(ks||[]).filter(function(k){return /^snap-/.test(k)}).sort().reverse().slice(14).forEach(bkDel)}).catch(function(){})}
+function escolheArqBackup(){window.showSaveFilePicker({suggestedName:'estudo-biblico-backup.json',types:[{description:'Backup do Estudo Bíblico',accept:{'application/json':['.json']}}]})
+  .then(function(h){BKH=h;return bkPut('arquivo',h)}).then(fazBackup).then(function(){toast('Backup automático ligado: '+BKH.name);drawMenu()})
+  .catch(function(e){if(!e||e.name!=='AbortError')toast('Não foi possível usar esse arquivo.')})}
+function reativaBackup(){if(!BKH)return;BKH.requestPermission({mode:'readwrite'}).then(function(st){if(st==='granted'){BKST='ok';return fazBackup().then(function(){toast('Backup automático reativado.')})}}).then(drawMenu).catch(function(){})}
+function paraBackup(){if(!confirm('Parar o backup automático em arquivo? O arquivo já salvo continua no computador.'))return;BKH=null;BKST='';bkDel('arquivo');drawMenu();bkPonto()}
+function quando(isoDH){var d=new Date(isoDH);return isNaN(d)?'':d.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'})+' às '+d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})}
+function menuBackup(){var ult=LS.getItem('ultimo_backup');
+  return '<span class="lb" style="margin-top:12px">Backup automático</span>'+
+  (!FSOK?'<p class="tag" style="margin:0 0 6px">Neste navegador não dá para gravar num arquivo sozinho; use “Exportar dados” de vez em quando.</p>':
+   BKH?'<p class="tag" style="margin:0 0 6px">📁 Gravando em <b>'+esc(BKH.name)+'</b>'+(BKST==='pausado'?' — <b class="atr">pausado</b>':'')+(ult?' · último: '+esc(quando(ult)):'')+'</p>'+
+     (BKST==='pausado'?'<button class="btn mb" onclick="reativaBackup()">🔓 Reativar backup automático</button>':'')+'<button class="btn ghost mb" onclick="paraBackup()">Parar backup em arquivo</button>':
+   '<p class="tag" style="margin:0 0 6px">Grava uma cópia dos seus dados num arquivo do computador a cada alteração.</p><button class="btn ghost mb" onclick="escolheArqBackup()">📁 Escolher arquivo de backup</button>')+
+  '<button class="btn ghost mb" onclick="verSnaps()">🗂 Cópias diárias neste aparelho</button><div id="snaps"></div>'}
+function verSnaps(){var box=document.getElementById('snaps');if(!box)return;
+  tx('backup','readonly',function(s){return s.getAllKeys()}).then(function(ks){ks=(ks||[]).filter(function(k){return /^snap-/.test(k)}).sort().reverse();
+    box.innerHTML=ks.length?ks.map(function(k){return '<div class="row" style="justify-content:space-between;flex-wrap:nowrap;padding:4px 0"><span class="tag">'+esc(fmtD(k.slice(5,15)))+(k.length>15?' (antes de restaurar)':'')+'</span><button class="btn ghost" style="padding:4px 10px" onclick="restauraSnap(\''+k+'\')">Restaurar</button></div>'}).join(''):'<p class="tag" style="margin:0 0 6px">Ainda não há cópias. Elas são criadas sozinhas, uma por dia, quando você usa o app.</p>'}).catch(function(){box.innerHTML=''})}
+function restauraSnap(k){bkGet(k).then(function(p){if(!p||!p.dados)return;
+  if(!confirm('Restaurar a cópia de '+fmtD(k.slice(5,15))+'? Os dados atuais serão substituídos por ela'+(LS.getItem('estudo_codigo')?' — também na nuvem e nos outros aparelhos':'')+'.'))return;
+  bkPut('snap-'+iso(new Date())+'~antes',bkPayload()).then(function(){DATA=Object.assign(base(),p.dados);META.dirty=true;persistLocal();push();document.getElementById('menu').classList.remove('show');render();toast('Cópia de '+fmtD(k.slice(5,15))+' restaurada.')})})}
+function bkIniciar(){bkGet('arquivo').then(function(h){if(h&&h.queryPermission){BKH=h;return h.queryPermission({mode:'readwrite'}).then(function(st){BKST=st==='granted'?'ok':'pausado'})}}).then(function(){setTimeout(fazBackup,5000);bkPonto()})}
+/* Aviso discreto: só um pontinho no ⚙ quando o backup em arquivo está pausado ou faz mais de 7 dias sem backup */
+function bkAlerta(){if(!temDados())return false;if(BKH)return BKST==='pausado';var u=LS.getItem('ultimo_backup');return !u||Date.now()-new Date(u)>7*864e5}
+function bkPonto(){var p=document.getElementById('bkdot');if(p)p.style.display=bkAlerta()?'':'none'}
+function importar(inp){var f=inp.files[0];inp.value='';if(!f)return;document.getElementById('menu').classList.remove('show');
+  f.text().then(function(t){var j=JSON.parse(t),d=j&&j.app==='estudo'&&j.dados?j.dados:j&&j.collections?doAntigo(j.collections):null;
+    if(!d){toast('Arquivo de backup não reconhecido.');return}
+    if(!confirm('Importar este backup? Os itens dele serão somados aos que já existem aqui (nada é apagado).'))return;
+    var n=mescla(d);if(j.prefs)Object.keys(j.prefs).forEach(function(k){try{if(LS.getItem(k)==null)LS.setItem(k,j.prefs[k])}catch(e){}});
+    save('notes',DATA.notes);aplicaTema();render();toast(n?n+' item(ns) importado(s).':'Nada novo para importar.')}).catch(function(){toast('Não foi possível ler o backup.')})}
+function mescla(d){var n=0;
+  ['anot','marc','esbocos','ebd','planos','saud','fav','ebdtri'].forEach(function(k){var src=d[k];if(!Array.isArray(src)||!src.length)return;
+    var cur=(DATA[k]||[]).slice(),seen={};cur.forEach(function(x){seen[x&&x.id?x.id:JSON.stringify(x)]=1});
+    src.forEach(function(x){var key=x&&x.id?x.id:JSON.stringify(x);if(!seen[key]){seen[key]=1;cur.push(x);n++}});DATA[k]=cur});
+  if(d.notes){var no=Object.assign({},DATA.notes);Object.keys(d.notes).forEach(function(k){if(!no[k]){no[k]=d.notes[k];n++}});DATA.notes=no}
+  if(d.ebdprof){var ep=Object.assign({},DATA.ebdprof);Object.keys(d.ebdprof).forEach(function(k){if(!ep[k]){ep[k]=d.ebdprof[k];n++}});DATA.ebdprof=ep}
+  if(d.plano&&d.plano.inicio&&!(DATA.plano&&DATA.plano.inicio)){DATA.plano=d.plano;n++}
+  if(d.trim&&d.trim.inicio&&!(DATA.trim&&DATA.trim.inicio)){DATA.trim=d.trim;n++}
+  return n}
+/* Backup do app antigo: coleções no estilo {notes:[{id,data}],...}. Registros salvos em "colecao/ID" são edições do item ID. */
+var OLDAB='gn ex lv nm dt js jz rt 1sm 2sm 1rs 2rs 1cr 2cr ed ne et job sl pv ec ct is jr lm ez dn os jl am ob jn mq na hc sf ag zc ml mt mc lc jo at rm 1co 2co gl ef fp cl 1ts 2ts 1tm 2tm tt fm hb tg 1pe 2pe 1jo 2jo 3jo jd ap'.split(' ');
+function doAntigo(C){var col={};
+  Object.keys(C).forEach(function(k){var p=k.split('/'),nm=p[0];col[nm]=col[nm]||{};(C[k]||[]).forEach(function(x){var id=x&&(x.id||p[1]);if(!id||!x.data)return;col[nm][id]=Object.assign(col[nm][id]||{},x.data)})});
+  function L(nm){var o=col[nm]||{};return Object.keys(o).map(function(id){return Object.assign({_id:id},o[id])})}
+  function dia(s){return String(s||'').slice(0,10)}
+  var d={anot:[],marc:[],esbocos:[],saud:[],ebd:[],planos:[]};
+  L('notes').forEach(function(n){var b=OLDAB.indexOf(n.book_abbrev);if(b<0||!n.chapter)return;var x={id:'old_'+n._id,b:b,c:+n.chapter,v:+n.verse_start||1,t:(n.title?n.title+'\n':'')+(n.content||''),d:dia(n.updated_at)};if(+n.verse_end>x.v)x.e=+n.verse_end;d.anot.push(x)});
+  L('bookmarks').forEach(function(m){var b=OLDAB.indexOf(m.book_abbrev);if(b<0)return;d.marc.push({id:'old_'+m._id,b:b,c:+m.chapter,v:+m.verse||1,ver:m.version||'',l:m.label||'',d:dia(m.created_at)})});
+  L('esbocos').forEach(function(e){d.esbocos.push({id:'old_'+e._id,t:e.title||'',r:e.main_ref||'',i:e.introducao||'',pts:(e.points||[]).map(function(p){return{s:p.subject||'',r:p.ref||'',h:p.text||'',sub:0}}),c:e.conclusion||'',u:e.updated_at||''})});
+  L('saudacoes').forEach(function(s){d.saud.push({id:'old_'+s._id,t:s.title||'',h:s.content||'',u:s.updated_at||''})});
+  L('ebd').forEach(function(l){d.ebd.push({id:'old_'+l._id,d:l.date||'',t:l.title||'',r:l.ref||'',n:l.content||'',ok:false})});
+  L('planos').forEach(function(p){if(!p.schedule)return;var f={};(p.completed||[]).forEach(function(x,i){if(x)f[i+1]=true});
+    d.planos.push({id:'old_'+p._id,nome:p.name||'Plano',inicio:p.start_date||iso(new Date()),feitos:f,dias:p.schedule.map(function(day){var A=(day||[]).map(function(r){return[OLDAB.indexOf(r.book),r.chapter]}).filter(function(r){return r[0]>=0});return rangeText(A,0,A.length)})})});
+  return d}
+
+/* Voltar: pilha das telas visitadas, ligada ao histórico do navegador (botão voltar do celular também funciona).
+   Ida e volta para a mesma tela (ex.: lista → editor → lista ao salvar) desfaz o passo, para o voltar não reabrir o editor. */
+var NAV=[],NAVR=false,NAVSKIP=0;
+function navKey(){var k=view;
+  if(view==='biblia')k+='|'+(S.bt||'ler')+(S.cmp?'|c':'')+(S.ed?'|a':'')+(S.novo?'|n':'');
+  else if(view==='esboco')k+='|'+etAtual()+(S.imp?'|imp':'')+(S.ev!=null?'|v'+S.ev:'')+(S.sv!=null?'|s'+S.sv:'')+(S.edit!==null?'|e'+S.edit:'');
+  else if(view==='ebd')k+='|'+clsAtual()+'|'+(S.tri||'')+(S.trf?'|f':'')+(S.edit!==null?'|e'+S.edit:'');
+  return k}
+function navSnap(){return{k:navKey(),v:view,bt:S.bt,et:S.et,eb:S.eb,edit:S.edit,ed:S.ed,novo:S.novo,cmp:S.cmp,book:S.book,chap:S.chap,verse:S.verse,pid:S.pid,pday:S.pday,tk:S.tk,tri:S.tri,cls:S.cls,trf:S.trf,imp:S.imp,ev:S.ev,sv:S.sv}}
+function marca(){document.getElementById('voltar').style.display=view==='home'?'none':'';bkPonto();if(NAVR)return;var k=navKey(),n=NAV.length;
+  if(n&&NAV[n-1].k===k){NAV[n-1]=navSnap();return}
+  if(n>1&&NAV[n-2].k===k){NAV.pop();NAV[n-2]=navSnap();NAVSKIP++;history.back();return}
+  NAV.push(navSnap());if(n)history.pushState({n:NAV.length},'')}
+function fechaCamadas(){var p=document.getElementById('pres'),v=document.getElementById('pv'),m=document.getElementById('menu');
+  if(p.classList.contains('show')){presClose();return true}if(v.classList.contains('show')){pdfFecha();return true}if(m.classList.contains('show')){m.classList.remove('show');return true}return false}
+function voltar(){if(fechaCamadas())return;if(NAV.length>1)history.back();else go('home')}
+window.addEventListener('popstate',function(){if(NAVSKIP){NAVSKIP--;return}
+  if(fechaCamadas()){history.pushState({n:NAV.length},'');return}
+  if(NAV.length<2)return;NAV.pop();var s=NAV[NAV.length-1],lst=s.v==='esboco'?(s.et==='sau'?DATA.saud:DATA.esbocos):s.v==='ebd'?DATA.ebd:null;
+  ['bt','et','eb','edit','ed','novo','cmp','book','chap','verse','pid','pday','tk','tri','cls','trf','imp','ev','sv'].forEach(function(f){S[f]=s[f]});
+  if(S.edit>=0&&!(lst&&lst[S.edit]))S.edit=null;
+  NAVR=true;try{window.scrollTo(0,0);render(s.v)}finally{NAVR=false}});
+function go(v){S.edit=null;S.imp=false;S.ev=null;S.sv=null;S.novo=false;S.ed=null;if(v==='home'){S.book=null;S.chap=null}window.scrollTo(0,0);render(v)}
+var view='home';
+function render(v){
+  view=v||view;marca();
+  document.querySelectorAll('#nav button').forEach(function(b){b.className=b.dataset.v===view?'on':''});
+  if(view==='home')home();else if(view==='biblia')biblia();else if(view==='esboco')esboco();else ebd();
+}
+
+function planoHoje(){var out=[];
+  function add(id,nome,P,N,read){if(!P||!P.inicio)return;var d=Math.max(1,Math.min(N,Math.floor((Date.now()-new Date(P.inicio+'T00:00:00').getTime())/864e5)+1)),F=P.feitos||{},n=Object.keys(F).filter(function(k){return F[k]}).length;
+    out.push({id:id,nome:nome,d:d,N:N,t:read(d),ok:!!F[d],pct:Math.round(n*100/N)})}
+  add('ano','Bíblia em 1 ano',DATA.plano,365,dayRead);
+  (DATA.planos||[]).forEach(function(p){add(p.id,p.nome,p,p.dias.length,function(d){return p.dias[d-1]})});return out}
+function pos(){try{return JSON.parse(LS.getItem('pos'))}catch(e){return null}}
+function continuar(){var p=pos();if(!p)return;S.book=p.b;S.chap=p.c;S.verse=null;S.cmp=false;S.bt='ler';go('biblia')}
+/* Próxima aula da EBD pelo calendário do trimestre (a de hoje ou a seguinte) */
+function proxLicao(){var hj=iso(new Date()),l=DATA.ebd||[],cls=clsAtual(),T=TRIS().filter(function(x){return x.cls===cls});
+  for(var i=0;i<T.length;i++){var m=T[i];for(var k=0;k<m.temas.length;k++){var ds=dataLic(m,k);if(ds<hj)continue;var j=licIdx(m,k),pf=profDe(m,k);
+    return{id:m.id,k:k,quando:'EBD '+clsNome(cls)+' · '+(ds===hj?'hoje':fmtD(ds)),titulo:m.temas[k],sub:'Lição '+(k+1)+' de '+m.temas.length+(pf?' · '+pf:'')+(j>=0&&l[j].ok?' · concluída':'')}}}
+  return null}
+function togHoje(id,d){var o=S.pid;S.pid=id;var sel=planoSel(),P=JSON.parse(JSON.stringify(sel.P));P.feitos=P.feitos||{};P.feitos[d]=!P.feitos[d];saveSel(sel,P);S.pid=o;home();if(P.feitos[d])toast('Leitura do dia marcada como lida.')}
+function home(){
+  var now=new Date(),h=now.getHours(),g=h<12?'Bom dia':h<18?'Boa tarde':'Boa noite',
+  dt=now.toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long'}),pl=planoHoje(),p=pos(),nx=proxLicao(),c=[];
+  function sec(t){return '<div class="sec">'+t+'</div>'}
+  function feat(ic,hue,sm,t,extra,js){return '<button class="feat" onclick="'+js+'"><div class="ic" style="--hue:'+hue+'">'+ic+'</div><div class="fx"><small>'+esc(sm)+'</small><b>'+esc(t)+'</b>'+extra+'</div><span class="chev">›</span></button>'}  if(p&&ALL[p.b])c.push(feat('📖','var(--acc)','Continuar lendo',ALL[p.b][0]+' '+p.c,'<div class="bar"><div style="width:'+Math.round(p.c*100/ALL[p.b][1])+'%"></div></div>','continuar()'));
+  if(nx)c.push(feat('🎓','#8a63c9',nx.quando,nx.titulo,'<span class="tag">'+esc(nx.sub)+'</span>',"go('ebd');openAula('"+nx.id+"',"+nx.k+")"));
+  app.innerHTML='<section class="hero"><div class="hdate">'+esc(dt)+'</div><div class="htitle">'+g+'</div><p class="hsub">Que a Palavra guie o seu estudo hoje.</p><div class="vod" id="vd"></div></section>'+
+  (cfgOk()&&!LS.getItem('estudo_codigo')?'<button class="feat" style="margin-top:14px;border-color:var(--acc)" onclick="pedeCodigo(event)"><div class="ic">☁</div><div class="fx"><small>Proteja seus dados</small><b>Conectar à nuvem</b><span class="tag">Digite seu código de acesso uma vez neste aparelho.</span></div><span class="chev">›</span></button>':'')+
+  (c.length?sec('Continuar')+'<div class="g2">'+c.join('')+'</div>':'')+
+  (pl.length?sec('Leitura de hoje')+'<div class="g2">'+pl.map(function(x){return '<div class="plan"><div class="ring" style="--p:'+x.pct+'"><span>'+x.pct+'%</span></div><div class="fx" onclick="S.bt=\'plano\';S.pid=\''+x.id+'\';S.pday=null;S.novo=false;go(\'biblia\')"><small>'+esc(x.nome)+' · dia '+x.d+' de '+x.N+'</small><b>'+esc(x.t)+'</b></div><button class="chk'+(x.ok?' on':'')+'" title="'+(x.ok?'Lido — desmarcar':'Marcar como lido')+'" onclick="togHoje(\''+x.id+'\','+x.d+')">✓</button></div>'}).join('')+'</div>':'');
+  fillVd();
+}
+/* BÍBLIA */
+function lcfg(){var c={fs:18,lh:1.7,nums:true,full:false,par:false};try{Object.assign(c,JSON.parse(LS.getItem('leitura')))}catch(e){}return c}
+function setCfg(k,val){var c=lcfg();c[k]=val;try{LS.setItem('leitura',JSON.stringify(c))}catch(e){}biblia()}
+/* Versão principal: ACF (pela sigla ou pelo nome). A leitura sempre abre nela; escolher outra vale só até fechar o app. */
+function verPrincipal(){var m=VMETA.filter(function(x){return /^acf$/i.test(String(x.nome).trim())})[0]||VMETA.filter(function(x){return /corrigida\s+fiel/i.test(x.completo||'')})[0];return m?m.id:(VMETA.length?VMETA[0].id:null)}
+function verAtiva(){var id=S.va;if(!VMETA.some(function(m){return m.id===id}))id=verPrincipal();return id}
+function lerBiblia(){var c=lcfg(),id=verAtiva(),at=VMETA.filter(function(m){return m.id===id})[0],sel=S.book!==null&&S.chap!==null,h='';
+  if(!S.cmp)h+='<div class="books" style="margin-bottom:8px">'+(VMETA.length?VMETA.map(function(m){return '<div class="chip'+(m.id===id?' on':'')+'" onclick="setAtiva(\''+m.id+'\')">'+esc(c.full?(m.completo||m.nome):m.nome)+'</div>'}).join(''):'<span class="tag">Nenhuma versão instalada — abra a aba “Versões”.</span>')+'</div>';
+  h+='<div class="row" style="justify-content:space-between;margin-bottom:10px"><label class="tag"><input type="checkbox" '+(c.full?'checked':'')+' onchange="setCfg(\'full\',this.checked)">Mostrar nome completo das versões</label><span class="row"><button class="btn'+(S.cmp?'':' ghost')+'" onclick="togPanes()">⇄ Versões bíblicas</button><button class="btn ghost" onclick="S.cfg=!S.cfg;biblia()">⚙ Leitura</button></span></div>';
+  if(S.cfg)h+='<div class="card"><div class="row"><span>Tamanho do texto</span><button class="btn ghost" onclick="setCfg(\'fs\',Math.max(12,lcfg().fs-2))">A−</button><b>'+c.fs+'</b><button class="btn ghost" onclick="setCfg(\'fs\',Math.min(32,lcfg().fs+2))">A+</button>'+
+    '<span>Espaçamento</span><select style="width:auto" onchange="setCfg(\'lh\',+this.value)"><option value="1.4"'+(c.lh==1.4?' selected':'')+'>Compacto</option><option value="1.7"'+(c.lh==1.7?' selected':'')+'>Normal</option><option value="2"'+(c.lh==2?' selected':'')+'>Amplo</option></select></div>'+
+    '<div class="row" style="margin-top:8px"><label><input type="checkbox" '+(c.nums?'checked':'')+' onchange="setCfg(\'nums\',this.checked)">Números dos versículos</label><label><input type="checkbox" '+(c.par?'checked':'')+' onchange="setCfg(\'par\',this.checked)">Modo parágrafo</label></div><p class="tag" style="margin:8px 0 0">O tema (claro, sépia, escuro, OLED) fica no ⚙ do topo.</p></div>';
+  if(S.cmp)return h+panesView(c);
+  h+='<div class="card" style="padding:12px"><div class="row" style="flex-wrap:nowrap"><input id="bq" placeholder="'+esc(S.book!==null?ALL[S.book][0]:'Livro (ex.: Jo 3:16) ou palavra')+'" autocomplete="off" enterkeyhint="go" oninput="filtraLv()" onfocus="filtraLv()" onkeydown="if(event.key===\'Enter\')irBusca()" style="flex:2;min-width:0">'+
+    '<input id="bc" type="number" min="1" inputmode="numeric" placeholder="Cap." value="'+(S.chap||'')+'" style="flex:.8;min-width:0"><input id="bv" type="number" min="1" inputmode="numeric" placeholder="Vers." value="'+(S.verse||'')+'" style="flex:.8;min-width:0"><button class="btn" onclick="irBusca()">Ir</button></div><div id="lv" class="lv" style="display:none"></div></div>';
+  h+='<div style="border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:12px;background:var(--card);box-shadow:var(--sh)"><div class="row" style="justify-content:space-between;background:var(--bg2);padding:8px 14px;border-bottom:1px solid var(--line)"><b style="color:var(--acc);font-size:.85rem;letter-spacing:.04em;text-transform:uppercase">'+esc(at?at.nome:'—')+(sel?' · '+esc(ALL[S.book][0])+' '+S.chap+(S.verse?':'+S.verse:''):'')+'</b><button class="btn ghost" id="ouvir" onclick="ouvir()" style="padding:4px 11px;font-size:.82rem">🔊 Ouvir</button></div>'+
+    '<div id="txt" class="'+(c.par?'par':'')+'" style="padding:12px 14px;min-height:110px;font-size:'+c.fs+'px;line-height:'+c.lh+'"></div>'+
+    (sel?'<div class="row" style="padding:0 14px 12px"><button class="btn ghost" onclick="step(-1)">← Anterior</button><button class="btn ghost" onclick="step(1)">Próximo →</button><span class="tag">Toque nos versículos para anotar, marcar ou copiar.</span></div>':'')+'</div><div id="selbar" class="selbar"></div>';
+  return h}
+function bk(list){return list.map(function(b){var i=ALL.indexOf(b);return '<div class="chip'+(S.book===i?' on':'')+'" onclick="pickBook('+i+')">'+esc(b[0])+'</div>'}).join('')}
+function pickBook(i){S.book=i;S.chap=1;S.verse=null;biblia()}
+function pickChap(i){S.chap=i;biblia();window.scrollTo(0,0)}
+function anotV(b,c,v,e){var l=DATA.anot||[];for(var i=0;i<l.length;i++)if(l[i].b===b&&l[i].c===c&&l[i].v===v&&(l[i].e||0)===(e||0))return l[i];return null}
+function step(d){var n=S.chap+d,mx=ALL[S.book][1];S.verse=null;if(n>mx){if(S.book>=ALL.length-1)return;S.book++;n=1}else if(n<1){if(S.book<=0)return;S.book--;n=ALL[S.book][1]}S.chap=n;biblia();window.scrollTo(0,0)}
+var CURV=[],SEL={},SELK='';
+function showTxt(){var box=document.getElementById('txt');if(!box)return;var c=lcfg();CURV=[];if(window.speechSynthesis)speechSynthesis.cancel();
+  if(S.book===null||S.chap===null){box.innerHTML='<p class="tag" style="text-align:center">Escolha um livro e um capítulo acima.</p>';return}
+  try{LS.setItem('pos',JSON.stringify({b:S.book,c:S.chap}))}catch(e){}
+  if(SELK!==S.book+':'+S.chap){SEL={};SELK=S.book+':'+S.chap}
+  var id=verAtiva();if(!id){box.innerHTML='<p class="tag" style="text-align:center">Nenhuma versão instalada.<br>Importe uma versão na aba “Versões”.</p>';return}
+  getVers(id).then(function(L){var vs=L&&L[S.book]&&L[S.book][S.chap-1]||[],an={},mk={},k;CURV=vs;
+    (DATA.anot||[]).forEach(function(x){if(x.b===S.book&&x.c===S.chap)for(k=x.v;k<=(x.e||x.v);k++)an[k]=1});
+    (DATA.marc||[]).forEach(function(x){if(x.b===S.book&&x.c===S.chap)mk[x.v]=1});
+    box.innerHTML=vs.length?vs.map(function(t,i){var n=i+1;return '<p id="vv'+n+'" class="vr'+(S.verse===n?' vhl':'')+(SEL[n]?' sel':'')+'" onclick="tapV('+n+')">'+(c.nums?'<b class="vn">'+n+'</b> ':'')+esc(t)+(an[n]?' <span class="mk" title="Tem anotação">📝</span>':'')+(mk[n]?' <span class="mk" title="Marcado">🔖</span>':'')+'</p>'}).join(''):'<p class="tag" style="text-align:center">Sem texto para '+esc(ALL[S.book][0])+' '+S.chap+' nesta versão.<br>Importe a versão na aba “Versões”.</p>';
+    if(vs.length&&embutida(id))box.innerHTML+=credCurto();
+    drawSel();
+    if(S.verse){var el=document.getElementById('vv'+S.verse);if(el)el.scrollIntoView({block:'center',behavior:'smooth'})}})}
+/* Seleção de versículos: anotar, marcar ou copiar vários de uma vez */
+function tapV(n){var s=window.getSelection&&String(getSelection());if(s&&s.length>1)return;if(SEL[n])delete SEL[n];else SEL[n]=1;var el=document.getElementById('vv'+n);if(el)el.classList.toggle('sel',!!SEL[n]);drawSel()}
+function selNums(){return Object.keys(SEL).map(Number).sort(function(a,b){return a-b})}
+function faixa(ns){var out=[],a=ns[0],p=ns[0];for(var i=1;i<=ns.length;i++){if(ns[i]===p+1){p=ns[i];continue}out.push(a===p?a:a+'-'+p);a=p=ns[i]}return out.join(',')}
+function drawSel(){var b=document.getElementById('selbar');if(!b)return;var ns=selNums();if(!ns.length){b.className='selbar';b.innerHTML='';return}
+  b.className='selbar show';b.innerHTML='<span>'+esc(ALL[S.book][0]+' '+S.chap+':'+faixa(ns))+'</span><button onclick="anotSel()">📝 Anotar</button><button onclick="marcar()">🔖 Marcar</button><button onclick="copiarSel()">📋 Copiar</button><button onclick="esbocoSel()">✍ Usar em esboço</button><button onclick="limpaSel()" title="Limpar seleção">✕</button>'}
+/* Novo esboço com os versículos selecionados como texto base: 1 versículo → Textual; vários → Expositivo */
+function esbocoSel(){var ns=selNums();if(!ns.length)return;var tp=ns.length>1?'exp':'txt',r=ALL[S.book][0]+' '+S.chap+':'+(ns.length>1?ns[0]+'-'+ns[ns.length-1]:ns[0]);
+  SEL={};PREF={tp:tp,t:'',r:r,i:'',pts:[],c:''};go('esboco');S.et=tp;S.edit=-1;esboco();window.scrollTo(0,0);toast('Esboço '+TIPOS[tp].nome.toLowerCase()+' com o texto '+r+'. Dá para trocar o tipo no topo.')}
+function limpaSel(){SEL={};document.querySelectorAll('.vr.sel').forEach(function(e){e.classList.remove('sel')});drawSel()}
+function anotSel(){var ns=selNums();SEL={};novaAnot(S.book,S.chap,ns[0],ns[ns.length-1])}
+function copiarSel(){var ns=selNums(),m=VMETA.filter(function(x){return x.id===verAtiva()})[0],
+  t=ns.map(function(n){return n+' '+(CURV[n-1]||'')}).join(' ')+'\n— '+ALL[S.book][0]+' '+S.chap+':'+faixa(ns)+(m?' ('+m.nome+')':'')+(m&&embutida(m.id)?'\n'+credCurtoTxt():'');
+  if(navigator.clipboard)navigator.clipboard.writeText(t).then(function(){toast('Texto copiado.')},function(){prompt('Copie o texto:',t)});else prompt('Copie o texto:',t);limpaSel()}
+function marcar(){var ns=selNums();if(!ns.length)return;var l=prompt('Nota rápida para o marcador (opcional):','');if(l===null)return;
+  var m=(DATA.marc||[]).slice(),ver=verAtiva()||'',d=iso(new Date()),now=Date.now();
+  ns.forEach(function(n,k){if(!m.some(function(x){return x.b===S.book&&x.c===S.chap&&x.v===n}))m.push({id:'m'+now+'_'+k,b:S.book,c:S.chap,v:n,ver:ver,l:l.trim(),d:d})});
+  save('marc',m);SEL={};showTxt();toast(ns.length>1?'Marcadores salvos.':'Marcador salvo.')}
+function ouvir(){var ss=window.speechSynthesis,btn=document.getElementById('ouvir');
+  if(!ss||!CURV.length){toast('Leitura em voz alta indisponível neste navegador, ou sem texto para ler.');return}
+  if(ss.speaking){ss.cancel();btn.textContent='🔊 Ouvir';return}
+  CURV.forEach(function(t,i){var u=new SpeechSynthesisUtterance(t);u.lang='pt-BR';if(i===CURV.length-1)u.onend=function(){var b=document.getElementById('ouvir');if(b)b.textContent='🔊 Ouvir'};ss.speak(u)});
+  btn.textContent='⏹ Parar'}
+
+/* Marcadores */
+function fmtD(ds){var a=String(ds||'').slice(0,10).split('-');return a.length===3?a[2]+'/'+a[1]+'/'+a[0]:''}
+function marcView(){var m=(DATA.marc||[]).map(function(x,i){return[x,i]}).sort(function(a,b){return (b[0].d||'').localeCompare(a[0].d||'')||b[1]-a[1]});
+  if(!m.length)return '<div class="card"><p class="tag" style="margin:0">Nenhum marcador ainda. Na aba Ler, toque nos versículos e depois em “🔖 Marcar”.</p></div>';
+  return m.map(function(p){var x=p[0],vm=VMETA.filter(function(y){return y.id===x.ver})[0],vn=vm?vm.nome:(x.ver&&!/^v\d+$/.test(x.ver)?x.ver.toUpperCase():'');
+    return '<div class="card"><div class="ch"><b class="cref" style="font-size:1rem">🔖 '+esc(ALL[x.b][0]+' '+x.c+':'+x.v)+'</b><small class="tag">'+esc((vn?vn+' · ':'')+fmtD(x.d))+'</small></div>'+(x.l?'<p class="cc" style="white-space:pre-wrap;margin-bottom:0">'+esc(x.l)+'</p>':'')+
+    '<div class="ca"><button class="btn ghost" onclick="abrirAnot('+x.b+','+x.c+','+x.v+')">Abrir</button><button class="btn ghost" onclick="edMarc(\''+esc(x.id)+'\')">Editar nota</button><button class="btn ghost danger" onclick="delMarc(\''+esc(x.id)+'\')">Excluir</button></div></div>'}).join('')}
+function edMarc(id){var m=(DATA.marc||[]).slice();for(var i=0;i<m.length;i++)if(m[i].id===id){var l=prompt('Nota do marcador:',m[i].l||'');if(l===null)return;m[i]=Object.assign({},m[i],{l:l.trim()});save('marc',m);biblia();return}}
+function delMarc(id){if(!confirm('Excluir este marcador?'))return;save('marc',(DATA.marc||[]).filter(function(x){return x.id!==id}));biblia()}
+
+/* Referências bíblicas digitadas (ex.: "Jo 3:16-18") e o texto delas na versão ativa */
+function bookIdx(s){s=String(s||'').trim().toLowerCase();if(!s)return -1;var c=s.replace(/\s+/g,''),n=norm(s),i;
+  if((i=OLDAB.indexOf(c))>-1)return i;
+  for(i=0;i<66;i++)if(norm(ALL[i][0])===n)return i;
+  for(i=0;i<66;i++)if(ABR[i].toLowerCase()===c)return i;
+  for(i=0;i<66;i++)if(norm(ABR[i])===n)return i;
+  for(i=0;i<66;i++)if(n.length>2&&norm(ALL[i][0]).indexOf(n)===0)return i;
+  return -1}
+function parseRef(t){var m=String(t||'').trim().match(/^(.+?)\s*(\d+)\s*[:.,]\s*(\d+)(?:\s*[-–]\s*(\d+))?$/);if(!m)return null;var b=bookIdx(m[1]);if(b<0)return null;var v1=+m[3],v2=m[4]?+m[4]:v1;return{b:b,c:+m[2],v1:v1,v2:Math.min(Math.max(v1,v2),v1+29)}}
+function refText(R){var id=verAtiva();if(!id||!R)return Promise.resolve(null);return getVers(id).then(function(L){var ch=L&&L[R.b]&&L[R.b][R.c-1];if(!ch)return null;var o=[];for(var k=R.v1;k<=R.v2&&k<=ch.length;k++)if(ch[k-1])o.push((R.v2>R.v1?k+' ':'')+ch[k-1]);return o.join(' ')||null}).catch(function(){return null})}
+function fillAutos(){document.querySelectorAll('.vauto[data-ref]').forEach(function(el){var R=parseRef(el.getAttribute('data-ref'));if(R)refText(R).then(function(t){el.textContent=t?'“'+t+'”':''})})}
+function prevRef(el){var box=el&&el.nextElementSibling;if(!box||!box.classList.contains('vauto'))return;var R=parseRef(el.value);if(!R){box.textContent='';return}refText(R).then(function(t){box.textContent=t?'“'+t+'”':''})}
+
+/* Texto com formatação (negrito, itálico, sublinhado, cor) */
+var RT_OK={B:1,STRONG:1,I:1,EM:1,U:1,SPAN:1,FONT:1,BR:1,DIV:1,P:1};
+function cl(n){var ch=n.firstChild;while(ch){var nx=ch.nextSibling;
+  if(ch.nodeType===1){var g=ch.tagName;
+    if(/^(SCRIPT|STYLE|META|LINK|TITLE|IFRAME|OBJECT)$/.test(g))n.removeChild(ch);
+    else if(!RT_OK[g]){var f=ch.firstChild;while(ch.firstChild)n.insertBefore(ch.firstChild,ch);n.removeChild(ch);nx=f||nx}
+    else{var col=(ch.style&&ch.style.color)||(g==='FONT'&&ch.getAttribute('color'))||'';while(ch.attributes.length)ch.removeAttribute(ch.attributes[0].name);if(col)ch.style.color=col;cl(ch)}}
+  else if(ch.nodeType!==3)n.removeChild(ch);
+  ch=nx}}
+function sanit(h){var c=document.createElement('div');c.innerHTML=h||'';cl(c);return rEmpty(c.innerHTML)?'':c.innerHTML}
+function rEmpty(h){var d=document.createElement('div');d.innerHTML=h||'';return !d.textContent.replace(/ /g,' ').trim()}
+function txt2html(t){return esc(t||'').replace(/\n/g,'<br>')}
+function rich(t){return /<\/?(b|i|u|br|div|p|span|font|strong|em)\b[^>]*>/i.test(t||'')?sanit(t):txt2html(t)}
+function plain(h){var d=document.createElement('div');d.innerHTML=rich(h).replace(/<br\s*\/?>/gi,'\n').replace(/<\/(div|p)>/gi,'\n');return d.textContent.replace(/\n{3,}/g,'\n\n').trim()}
+var RTE={el:null,rg:null};
+document.addEventListener('selectionchange',function(){var s=window.getSelection();if(!s||!s.rangeCount)return;var n=s.anchorNode,el=n&&(n.nodeType===1?n:n.parentElement);el=el&&el.closest&&el.closest('.rte');if(el){RTE.el=el;RTE.rg=s.getRangeAt(0).cloneRange()}});
+function rteRestore(){if(!RTE.el||!document.body.contains(RTE.el)){toast('Toque num trecho do texto (introdução, ponto, conclusão…) e depois na formatação.');return false}RTE.el.focus();if(RTE.rg){var s=window.getSelection();s.removeAllRanges();s.addRange(RTE.rg)}return true}
+function rteCmd(c){if(!rteRestore())return;document.execCommand('styleWithCSS',false,false);document.execCommand(c,false,null)}
+function rteColor(val){if(!rteRestore())return;document.execCommand('styleWithCSS',false,true);document.execCommand('foreColor',false,val)}
+function rteBar(){function b(c,t,l){return '<button class="btn ghost" onmousedown="event.preventDefault()" onclick="rteCmd(\''+c+'\')" title="'+t+'">'+l+'</button>'}
+  return '<div class="rtebar"><span class="tag">Formatar:</span>'+b('bold','Negrito','<b>N</b>')+b('italic','Itálico','<i>I</i>')+b('underline','Sublinhado','<u>S</u>')+'<input type="color" value="#7A2E2E" title="Cor do texto" oninput="rteColor(this.value)">'+b('removeFormat','Limpar formatação','⌫')+'</div>'}
+
+/* ESBOÇO e SAUDAÇÃO */
+function eprefs(){var p={sc:100,fam:'serif'};try{Object.assign(p,JSON.parse(LS.getItem('esboco_prefs')))}catch(e){}return p}
+function setEp(k,val){var p=eprefs();p[k]=val;try{LS.setItem('esboco_prefs',JSON.stringify(p))}catch(e){}var el=document.getElementById('epv');if(el)el.textContent=p.sc+'%'}
+function esNorm(o){if(!o||o.pts)return o;
+  var pts=(o.p||'').split('\n').filter(function(l){return l.trim()}).map(function(l){l=l.trim();return{s:l.replace(/^-\s*/,''),r:'',h:'',sub:l.charAt(0)==='-'?1:0}});
+  return{id:o.id,tp:o.tp,t:o.t||'',r:o.r||'',i:txt2html(o.i),pts:pts,c:txt2html(o.c),u:o.u||''}}
+function tabs2(cur,list,fn){return '<div class="books" style="margin-bottom:12px">'+list.map(function(x){return '<div class="chip'+(cur===x[0]?' on':'')+'" onclick="'+fn+'(\''+x[0]+'\')">'+x[1]+'</div>'}).join('')+'</div>'}
+function ordem(l){return l.map(function(x,i){return[x,i]}).sort(function(a,b){return (b[0].u||'').localeCompare(a[0].u||'')||b[1]-a[1]})}
+function vazio(t){return '<div class="card"><p class="tag" style="margin:0">'+t+'</p></div>'}
+/* Tipos de esboço: muda só a orientação e os rótulos do editor; a estrutura (introdução, pontos, conclusão) é a mesma.
+   Esboços antigos, sem tipo, entram como Temático. */
+var TIPOS={
+  exp:{nome:'Expositivo',ic:'📖',dica:'Explica uma passagem em sequência: cada ponto acompanha uma parte do texto, na ordem dos versículos.',base:'Passagem bíblica',ph:'Ex.: Jo 10:1-18',pts:'Divisões da passagem',pref:'Versículos desta parte (ex.: Jo 10:1-6)',pa:'Divisão'},
+  txt:{nome:'Textual',ic:'📜',dica:'Parte de um versículo ou texto curto: os pontos saem das palavras e frases do próprio texto.',base:'Texto (versículo)',ph:'Ex.: Jo 3:16',pts:'Pontos tirados do texto',pref:'Trecho do texto (opcional, ex.: Jo 3:16)',pa:'Ponto'},
+  tem:{nome:'Temático',ic:'💡',dica:'Desenvolve um tema: cada ponto pode usar textos de várias partes da Bíblia.',base:'Texto base (opcional)',ph:'Ex.: Rm 8:28',pts:'Pontos do tema',pref:'Referência (ex.: Sl 23:1)',pa:'Ponto'}};
+function tpDe(o){return o&&TIPOS[o.tp]?o.tp:'tem'}
+function etAtual(){return S.et==='sau'||TIPOS[S.et]?S.et:'exp'}
+var ESTP='exp';
+function esTab(t){S.et=t;S.edit=null;S.imp=false;S.ev=null;S.sv=null;esboco()}
+function esboco(){marca();S.et=etAtual();var sau=S.et==='sau';
+  if(S.edit!==null){if(sau)sauEditor();else esEditor();return}
+  var h=tabs2(S.et,[['exp','📖 Expositivo'],['txt','📜 Textual'],['tem','💡 Temático'],['sau','👋 Saudação']],'esTab');
+  if(sau){var L=DATA.saud||[];
+    if(S.sv!=null&&L[S.sv]){var x=L[S.sv];app.innerHTML=h+'<div class="card"><small class="licn">Saudação'+(x.u?' · '+esc(fmtD(x.u)):'')+'</small><h2 class="ct" style="font-size:1.45rem;margin:4px 0 10px">'+esc(x.t||'Sem título')+'</h2><div class="rt">'+rich(x.h)+'</div>'+
+      '<div class="ca"><button class="btn" onclick="S.edit='+S.sv+';esboco()">Editar</button><button class="btn ghost" onclick="apresSau('+S.sv+')">🖥 Apresentar</button></div></div>';return}
+    S.sv=null;
+    h+='<div class="row" style="justify-content:space-between;margin-bottom:10px"><span class="tag" style="flex:1;min-width:180px">Esboço rápido — só título e texto, ideal para abertura ou boas-vindas.</span><button class="btn" onclick="S.edit=-1;esboco()">+ Nova saudação</button></div>'+
+    (L.length?'<div class="card" style="padding:4px 14px">'+L.map(function(x,i){return '<div class="item" onclick="S.sv='+i+';esboco();window.scrollTo(0,0)"><div style="display:flex;gap:12px;align-items:baseline;min-width:0"><b class="licn" style="min-width:22px">'+(i+1)+'</b><div style="min-width:0"><b class="ct" style="font-size:1rem">'+esc(x.t||'Sem título')+'</b>'+(x.u?'<br><small>'+esc(fmtD(x.u))+'</small>':'')+'</div></div><span class="chev">›</span></div>'}).join('')+'</div>':vazio('Nenhuma saudação ainda. Toque em “+ Nova saudação”.'));
+    app.innerHTML=h;return}
+  var l=load('esbocos'),P=eprefs(),T=TIPOS[S.et];
+  if(S.imp){app.innerHTML=h+impView(T);return}
+  if(S.ev!=null&&l[S.ev]){app.innerHTML=h+esFull(esNorm(l[S.ev]),S.ev);fillAutos();return}
+  S.ev=null;
+  h+='<p class="tag" style="margin:-2px 0 10px">'+esc(T.dica)+'</p><div class="row" style="justify-content:space-between;margin-bottom:10px"><button class="btn ghost" onclick="S.efp=!S.efp;esboco()">⚙ Fonte</button><span class="row"><button class="btn ghost" onclick="S.imp=true;esboco()">📥 Importar sermão</button><button class="btn" onclick="S.edit=-1;esboco()">+ Novo esboço '+T.nome.toLowerCase()+'</button></span></div>';
+  if(S.efp)h+='<div class="card"><h3>Fonte da apresentação e do PDF</h3><div class="row"><span>Tamanho</span><input type="range" min="70" max="150" step="5" value="'+P.sc+'" oninput="setEp(\'sc\',+this.value)" style="flex:1;min-width:120px;width:auto"><b id="epv">'+P.sc+'%</b></div>'+
+    '<div class="row"><span>Fonte</span><select style="width:auto" onchange="setEp(\'fam\',this.value)"><option value="serif"'+(P.fam==='serif'?' selected':'')+'>Serifada (Lora)</option><option value="sans"'+(P.fam==='sans'?' selected':'')+'>Sem serifa (Work Sans)</option></select></div></div>';
+  var lt=l.map(function(x,i){return[x,i]}).filter(function(p){return tpDe(p[0])===S.et});
+  h+=lt.length?'<div class="card" style="padding:4px 14px">'+lt.map(function(p,n){var o=esNorm(p[0]),np=(o.pts||[]).filter(function(x){return !x.sub}).length;
+    return '<div class="item" onclick="S.ev='+p[1]+';esboco();window.scrollTo(0,0)"><div style="display:flex;gap:12px;align-items:baseline;min-width:0"><b class="licn" style="min-width:22px">'+(n+1)+'</b><div style="min-width:0"><b class="ct" style="font-size:1rem">'+esc(o.t||'Sem título')+'</b><br><small>'+esc([o.r,np?np+(np===1?' ponto':' pontos'):''].filter(Boolean).join(' · '))+'</small></div></div><span class="chev">›</span></div>'}).join('')+'</div>':vazio('Nenhum esboço '+T.nome.toLowerCase()+' ainda. Toque em “+ Novo esboço '+T.nome.toLowerCase()+'”.');
+  app.innerHTML=h;fillAutos()}
+/* Esboço completo (ao tocar no tema na lista) */
+function esFull(o,i){var pts=o.pts||[],n=0,q='load(\'esbocos\')['+i+']';
+  function sec(t){return '<div class="lbl" style="margin:16px 0 4px">'+t+'</div>'}
+  return '<div class="card"><small class="licn">Esboço '+esc(TIPOS[tpDe(o)].nome.toLowerCase())+(o.u?' · '+esc(fmtD(o.u)):'')+'</small><h2 class="ct" style="font-size:1.45rem;margin:4px 0 6px">'+esc(o.t||'Sem título')+'</h2>'+
+  (o.r?'<div class="cref">'+esc(o.r)+'</div><div class="vauto" data-ref="'+esc(o.r)+'"></div>':'')+
+  (!rEmpty(o.i)?sec('Introdução')+'<div class="rt">'+rich(o.i)+'</div>':'')+
+  (pts.length?sec(TIPOS[tpDe(o)].pts)+pts.map(function(p){if(!p.sub)n++;return '<div style="margin:10px 0 0 '+(p.sub?22:0)+'px"><b style="color:var(--acc)">'+(p.sub?'–':n+'.')+'</b> <b>'+esc(p.s||'')+'</b>'+(p.r?' <small class="cref">'+esc(p.r)+'</small><div class="vauto" data-ref="'+esc(p.r)+'"></div>':'')+(!rEmpty(p.h)?'<div class="rt" style="margin-top:2px">'+rich(p.h)+'</div>':'')+'</div>'}).join(''):'')+
+  (!rEmpty(o.c)?sec('Conclusão')+'<div class="rt">'+rich(o.c)+'</div>':'')+
+  '<div class="ca"><button class="btn" onclick="S.edit='+i+';esboco()">Editar</button><button class="btn ghost" onclick="apresEs('+q+')">🖥 Apresentar</button><button class="btn ghost" onclick="pdfEs('+q+')">📄 PDF</button><button class="btn ghost" onclick="shareEs('+q+')">Compartilhar</button></div></div>'}
+var PTS=[];
+function esEditor(){var l=load('esbocos'),x=esNorm(S.edit>=0?l[S.edit]:PREF||{tp:S.et,t:'',r:'',i:'',pts:[],c:''});PREF=null;ESTP=S.edit>=0?tpDe(x):(TIPOS[S.et]?S.et:'exp');
+  app.innerHTML='<div class="card"><h3>'+(S.edit>=0?'Editar':'Novo')+' esboço</h3>'+
+  '<div class="books" id="tps" style="margin-bottom:6px">'+Object.keys(TIPOS).map(function(k){return '<div class="chip sm" data-tp="'+k+'" onclick="setTp(\''+k+'\')">'+TIPOS[k].ic+' '+TIPOS[k].nome+'</div>'}).join('')+'</div><p class="tag" id="tpd" style="margin:0 0 6px"></p>'+rteBar()+
+  '<label class="lbl">Título</label><input id="t" placeholder="Ex.: O bom pastor" value="'+esc(x.t)+'">'+
+  '<label class="lbl" id="rl">Texto base</label><input id="r" placeholder="Ex.: Jo 10:11-18" value="'+esc(x.r)+'" oninput="prevRef(this)"><div class="vauto"></div>'+
+  '<label class="lbl">Introdução</label><div id="i" class="rte" contenteditable="true" data-ph="Como abrir o assunto…">'+rich(x.i)+'</div>'+
+  '<label class="lbl" id="ptl">Pontos</label><div id="pts"></div><div class="row"><button class="btn ghost" onclick="addPt(0)">+ Ponto</button><button class="btn ghost" onclick="addPt(1)">+ Subponto</button></div>'+
+  '<label class="lbl">Conclusão / apelo</label><div id="c" class="rte" contenteditable="true" data-ph="Como encerrar o assunto…">'+rich(x.c)+'</div>'+
+  '<div class="ca"><button class="btn" onclick="saveEs()">Salvar</button><button class="btn ghost" onclick="S.edit=null;esboco()">Cancelar</button><button class="btn ghost" onclick="apresEs(curEs())">🖥 Apresentar</button><button class="btn ghost" onclick="pdfEs(curEs())">📄 PDF</button><button class="btn ghost" onclick="shareEs(curEs())">Compartilhar</button>'+
+  (S.edit>=0?'<button class="btn ghost danger" onclick="delItem(\'esbocos\')">Excluir</button>':'')+'</div></div>';
+  PTS=x.pts.length?x.pts.map(function(p){return{s:p.s,r:p.r,h:rich(p.h),sub:p.sub}}):[{s:'',r:'',h:'',sub:0}];setTp(ESTP);prevRef(document.getElementById('r'))}
+/* Importar sermão pronto (Word .docx via mammoth, PDF via pdf.js, texto ou colado): o texto vira uma lista de linhas,
+   parseSermao separa título, texto base, introdução, pontos/subpontos e conclusão, e o editor abre preenchido para conferir. */
+var PREF=null,MAMMOTH='https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.13.0/mammoth.browser.min.js';
+function carregaScript(src,pronto){if(pronto())return Promise.resolve();return new Promise(function(res,rej){var s=document.createElement('script');s.src=src;s.onload=res;s.onerror=function(){rej(new Error('é preciso internet para ler este tipo de arquivo'))};document.head.appendChild(s)})}
+function impView(T){return '<div class="card"><h3>Importar sermão · esboço '+esc(T.nome.toLowerCase())+'</h3><p class="tag" style="margin-top:0">Escolha um arquivo do Word (.docx), PDF ou texto (.txt), ou cole o texto abaixo. O app separa título, texto base, introdução, pontos e conclusão; depois você confere tudo no editor antes de salvar.</p>'+
+  '<input id="impf" type="file" accept=".docx,.pdf,.txt,.md,text/plain,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document">'+
+  '<textarea id="impt" style="min-height:200px" placeholder="…ou cole aqui o texto do sermão"></textarea>'+
+  '<div class="ca"><button class="btn" onclick="importaSermao()">Ler sermão</button><button class="btn ghost" onclick="S.imp=false;esboco()">Cancelar</button></div>'+
+  '<p class="tag" style="margin-bottom:0">O app reconhece linhas como “Texto base: …”, “Introdução”, “1.”, “2.”, “I.”, “a)”, “•”, “Conclusão” e “Apelo”. Referências como “(Jo 10:11)” no fim de um ponto viram a referência do ponto.</p></div>'}
+function linhas(t){return String(t||'').split(/\r?\n/).map(function(l){return{t:l,h:esc(l)}})}
+function liInfo(el){var c=el.cloneNode(true),d=0,p=el.parentElement,pre;c.querySelectorAll('ol,ul').forEach(function(x){x.remove()});
+  while(p){if(p.tagName==='OL'||p.tagName==='UL')d++;p=p.parentElement}
+  pre=d>1||el.parentElement.tagName!=='OL'?'- ':(Array.prototype.indexOf.call(el.parentElement.children,el)+1)+'. ';return{t:pre+c.textContent,h:esc(pre)+sanit(c.innerHTML)}}
+function lerArquivoSermao(f){var n=f.name.toLowerCase();
+  if(/\.docx$/.test(n))return carregaScript(MAMMOTH,function(){return window.mammoth}).then(function(){return f.arrayBuffer()}).then(function(buf){return mammoth.convertToHtml({arrayBuffer:buf})}).then(function(r){
+    var d=document.createElement('div'),out=[];d.innerHTML=r.value;d.querySelectorAll('p,h1,h2,h3,h4,h5,h6,li').forEach(function(el){
+      if(el.tagName==='LI')out.push(liInfo(el));else out.push({t:el.textContent,h:sanit(el.innerHTML),hd:/^H\d/.test(el.tagName)})});return out});
+  if(/\.pdf$/.test(n))return carregaPdfJs().then(function(){return f.arrayBuffer()}).then(function(buf){return pdfjsLib.getDocument({data:buf}).promise}).then(function(pdf){var ps=[];for(var i=1;i<=pdf.numPages;i++)ps.push(pdf.getPage(i).then(function(pg){return pg.getTextContent()}));return Promise.all(ps)})
+    .then(function(cs){var ls=[];cs.forEach(function(c){var cur='',y=null;c.items.forEach(function(it){var yy=Math.round(it.transform[5]);if(y!==null&&Math.abs(yy-y)>2&&cur){ls.push(cur);cur=''}cur+=it.str;y=yy;if(it.hasEOL){ls.push(cur);cur='';y=null}});if(cur)ls.push(cur)});return linhas(ls.join('\n'))});
+  return f.text().then(linhas)}
+function importaSermao(){var f=document.getElementById('impf').files[0],t=v('impt');
+  (f?lerArquivoSermao(f):Promise.resolve(linhas(t))).then(function(P){if(!P||!P.some(function(x){return x.t.trim()})){toast('Escolha um arquivo ou cole o texto do sermão.');return}
+    var o=parseSermao(P);o.tp=TIPOS[S.et]?S.et:'tem';PREF=o;S.imp=false;S.edit=-1;esboco();window.scrollTo(0,0);toast('Sermão lido — confira e toque em Salvar.')})
+   .catch(function(e){toast('Não foi possível ler o arquivo: '+(e&&e.message||e))})}
+function refFim(s){var m=s.match(/^(.*?)\s*\(([^()]+)\)\s*$/)||s.match(/^(.*?)\s+[—–-]\s+([^—–-]+)$/);if(m&&parseRef(m[2]))return{s:m[1].replace(/[\s:–—-]+$/,''),r:m[2].trim()};return{s:s,r:''}}
+function parseSermao(P){var o={t:'',r:'',i:'',pts:[],c:''},modo='ini',cur=null,
+  RB=/^(texto(\s+(base|b[ií]blico|[aá]ureo))?|leitura(\s+b[ií]blica)?|passagem(\s+b[ií]blica)?|refer[eê]ncia|base\s+b[ií]blica)\s*[:\-–]\s*/i,
+  RI=/^introdu[cç][aã]o\b\s*[:\-–.]?\s*/i,RC=/^(conclus[aã]o|apelo|aplica[cç][aã]o\s+final|considera[cç][oõ]es\s+finais)\b\s*[:\-–.]?\s*/i,
+  RP=/^(?:(?:ponto|t[oó]pico|divis[aã]o)\s+)?(\d{1,2}|[IVX]{1,4})\s*[.)\-–º°:]\s*(.+)$/i,RS=/^(?:([a-z])\s*[.)]|[-•–·▪*])\s+(.+)$/i;
+  function add(m,h){if(m==='c')o.c+=(o.c?'<br>':'')+h;else if(m==='p'&&cur)cur.h+=(cur.h?'<br>':'')+h;else o.i+=(o.i?'<br>':'')+h}
+  P.forEach(function(x){var s=x.t.replace(/ /g,' ').replace(/\s+/g,' ').trim(),m,rest,q;if(!s)return;
+    if(!o.t){o.t=s.replace(/^(t[ií]tulo|tema|serm[aã]o|esbo[cç]o)\s*[:\-–]\s*/i,'');return}
+    if(RB.test(s)&&!o.r){o.r=s.replace(RB,'');return}
+    if(!o.r&&modo==='ini'&&s.length<40&&parseRef(s.replace(/[()]/g,''))){o.r=s.replace(/[()]/g,'').trim();return}
+    if(RI.test(s)){modo='i';rest=s.replace(RI,'');if(rest)add('i',esc(rest));return}
+    if(RC.test(s)){modo='c';rest=s.replace(RC,'');if(/^apelo/i.test(s))rest='<b>Apelo:</b>'+(rest?' '+esc(rest):'');else rest=esc(rest);if(rest)add('c',rest);return}
+    if(modo!=='c'&&(m=s.match(RP))&&!/^\d/.test(m[2])){q=refFim(m[2]);cur={s:q.s,r:q.r,h:'',sub:0};o.pts.push(cur);modo='p';return}
+    if(modo!=='c'&&x.hd&&o.t){q=refFim(s);cur={s:q.s,r:q.r,h:'',sub:0};o.pts.push(cur);modo='p';return}
+    if(modo==='p'&&(m=s.match(RS))){q=refFim(m[2]);cur={s:q.s,r:q.r,h:'',sub:1};o.pts.push(cur);return}
+    if(modo==='p'&&cur&&!cur.r&&s.length<40&&parseRef(s.replace(/[()]/g,''))){cur.r=s.replace(/[()]/g,'').trim();return}
+    add(modo,x.h)});
+  return o}
+/* Troca o tipo no editor sem perder o que já foi digitado (só rótulos, dica e exemplos mudam) */
+function setTp(k){var T=TIPOS[k];if(!T)return;if(document.querySelector('#pts .pt'))syncPts();ESTP=k;
+  document.querySelectorAll('#tps .chip').forEach(function(c){c.classList.toggle('on',c.getAttribute('data-tp')===k)});
+  document.getElementById('tpd').textContent=T.dica;document.getElementById('rl').textContent=T.base;document.getElementById('r').placeholder=T.ph;document.getElementById('ptl').textContent=T.pts;drawPts()}
+function drawPts(){var n=0,T=TIPOS[ESTP]||TIPOS.tem;document.getElementById('pts').innerHTML=PTS.map(function(x,i){if(!x.sub)n++;
+  return '<div class="pt" style="margin-left:'+(x.sub?22:0)+'px"><b class="pn">'+(x.sub?'–':n+'.')+'</b><div class="pf"><input class="ps" placeholder="'+(x.sub?'Subponto':T.pa+' '+n)+'" value="'+esc(x.s)+'"><input class="pr" placeholder="'+esc(T.pref)+'" value="'+esc(x.r)+'" oninput="prevRef(this)"><div class="vauto"></div><div class="rte sm" contenteditable="true" data-ph="Desenvolvimento (opcional)">'+x.h+'</div></div><button class="btn ghost danger" title="Remover" onclick="rmPt('+i+')">✕</button></div>'}).join('');
+  document.querySelectorAll('#pts .pr').forEach(function(e){if(e.value)prevRef(e)})}
+function syncPts(){document.querySelectorAll('#pts .pt').forEach(function(r,i){if(!PTS[i])return;PTS[i].s=r.querySelector('.ps').value;PTS[i].r=r.querySelector('.pr').value;PTS[i].h=r.querySelector('.rte').innerHTML})}
+function addPt(s){syncPts();PTS.push({s:'',r:'',h:'',sub:s});drawPts()}
+function rmPt(i){syncPts();PTS.splice(i,1);if(!PTS.length)PTS=[{s:'',r:'',h:'',sub:0}];drawPts()}
+function curEs(){syncPts();return{tp:ESTP,t:v('t').trim(),r:v('r').trim(),i:sanit(document.getElementById('i').innerHTML),
+  pts:PTS.map(function(p){return{s:p.s.trim(),r:p.r.trim(),h:sanit(p.h),sub:p.sub?1:0}}).filter(function(p){return p.s||p.r||p.h}),
+  c:sanit(document.getElementById('c').innerHTML),u:new Date().toISOString()}}
+function saveEs(){var l=load('esbocos').slice(),o=curEs(),old=S.edit>=0?l[S.edit]:null;if(!o.t){toast('Dê um título ao esboço.');return}
+  o.id=old&&old.id||'e'+Date.now();if(S.edit>=0)l[S.edit]=o;else l.push(o);save('esbocos',l);S.edit=null;S.et=o.tp;esboco();toast('Esboço salvo.')}
+function esText(o){var T=TIPOS[tpDe(o)],L=[o.t||'Sem título','Esboço '+T.nome.toLowerCase()],n=0;if(o.r)L.push(T.base.replace(' (opcional)','')+': '+o.r);
+  if(!rEmpty(o.i))L.push('','INTRODUÇÃO',plain(o.i));
+  if(o.pts.length){L.push('','PONTOS');o.pts.forEach(function(p){if(!p.sub)n++;L.push((p.sub?'    – ':n+'. ')+(p.s||'')+(p.r?' ('+p.r+')':''));if(p.h)L.push((p.sub?'      ':'   ')+plain(p.h).replace(/\n/g,' '))})}
+  if(!rEmpty(o.c))L.push('','CONCLUSÃO',plain(o.c));return L.join('\n')}
+function shareEs(o){o=esNorm(o);var t=esText(o);
+  if(navigator.share)navigator.share({title:o.t,text:t}).catch(function(){});
+  else if(navigator.clipboard)navigator.clipboard.writeText(t).then(function(){toast('Esboço copiado.')});else prompt('Copie o texto:',t)}
+function sauEditor(){var L=DATA.saud||[],x=S.edit>=0?L[S.edit]:{t:'',h:''};
+  app.innerHTML='<div class="card"><h3>'+(S.edit>=0?'Editar':'Nova')+' saudação</h3>'+rteBar()+'<label class="lbl">Título</label><input id="t" placeholder="Ex.: Boas-vindas do domingo" value="'+esc(x.t)+'">'+
+  '<label class="lbl">Texto</label><div id="h" class="rte" style="min-height:180px" contenteditable="true" data-ph="Escreva aqui a saudação…">'+rich(x.h)+'</div>'+
+  '<div class="ca"><button class="btn" onclick="saveSau()">Salvar</button><button class="btn ghost" onclick="S.edit=null;esboco()">Cancelar</button><button class="btn ghost" onclick="presOpen([{eb:\'Saudação\',hd:v(\'t\'),tx:sanit(document.getElementById(\'h\').innerHTML)}])">🖥 Apresentar</button>'+
+  (S.edit>=0?'<button class="btn ghost danger" onclick="delItem(\'saud\')">Excluir</button>':'')+'</div></div>'}
+function saveSau(){var t=v('t').trim();if(!t){toast('Dê um título à saudação.');return}
+  var L=(DATA.saud||[]).slice(),old=S.edit>=0?L[S.edit]:null,o={id:old&&old.id||'s'+Date.now(),t:t,h:sanit(document.getElementById('h').innerHTML),u:new Date().toISOString()};
+  if(S.edit>=0)L[S.edit]=o;else L.push(o);save('saud',L);S.edit=null;esboco();toast('Saudação salva.')}
+function apresSau(i){var x=DATA.saud[i];presOpen([{eb:'Saudação',hd:x.t,tx:x.h}])}
+function apresEs(o){o=esNorm(o);var s=[{eb:'Esboço '+TIPOS[tpDe(o)].nome.toLowerCase(),hd:o.t||'Sem título',rf:o.r}],tot=o.pts.filter(function(p){return !p.sub}).length,n=0;
+  if(!rEmpty(o.i))s.push({eb:'Introdução',tx:o.i});
+  o.pts.forEach(function(p){if(!p.sub)n++;s.push({eb:p.sub?'Ponto '+n+' · subponto':'Ponto '+n+' de '+tot,hd:p.s,rf:p.r,tx:p.h})});
+  if(!rEmpty(o.c))s.push({eb:'Conclusão',tx:o.c});presOpen(s)}
+
+/* Modo apresentação (tela cheia, um bloco por vez) */
+var PS=[],PI=0,PTX=null;
+function presOpen(sl){PS=sl;PI=0;var o=document.getElementById('pres'),p=eprefs();o.style.setProperty('--eb-scale',p.sc/100);o.style.setProperty('--eb-font',p.fam==='sans'?'var(--sans)':'var(--serif)');o.classList.add('show');presDraw();
+  PS.forEach(function(s,k){var R=s.rf&&parseRef(s.rf);if(R)refText(R).then(function(t){if(t&&PS===sl){s.vs=t;if(k===PI)presDraw()}})})}
+function presDraw(){var s=PS[PI];if(!s)return;document.getElementById('prc').textContent=(PI+1)+' / '+PS.length;
+  var b=document.getElementById('prb');b.innerHTML='<div class="pe">'+esc(s.eb||'')+'</div>'+(s.hd?'<div class="ph">'+esc(s.hd)+'</div>':'')+(s.rf?'<div class="pr2">'+esc(s.rf)+'</div>':'')+(s.tx&&!rEmpty(s.tx)?'<div class="ptx rt">'+rich(s.tx)+'</div>':'')+(s.vs?'<div class="pv2">“'+esc(s.vs)+'”</div>'+(embutida(verAtiva())?'<div style="margin-top:14px;font-size:.72rem;color:#9a937f">Texto bíblico: JFAAL, © Marcos Cristiano Alves Ferreira (2024) · CC BY 3.0 BR</div>':''):'');b.scrollTop=0;
+  document.getElementById('prp').disabled=PI===0;document.getElementById('prn').disabled=PI===PS.length-1}
+function presGo(d){var n=PI+d;if(n<0||n>=PS.length)return;PI=n;presDraw()}
+function presClose(){document.getElementById('pres').classList.remove('show');PS=[]}
+document.addEventListener('keydown',function(e){if(!document.getElementById('pres').classList.contains('show'))return;
+  if(e.key==='Escape')presClose();else if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();presGo(1)}else if(e.key==='ArrowLeft'||e.key==='PageUp')presGo(-1)});
+document.getElementById('pres').addEventListener('touchstart',function(e){PTX=e.touches[0].clientX},{passive:true});
+document.getElementById('pres').addEventListener('touchend',function(e){if(PTX===null)return;var dx=e.changedTouches[0].clientX-PTX;PTX=null;if(Math.abs(dx)>60)presGo(dx<0?1:-1)});
+
+/* PDF (jsPDF) com prévia das páginas (pdf.js, carregado só quando preciso) */
+function blocks(h){var c=document.createElement('div');c.innerHTML=rich(h);var B=[[]];
+  function add(t,st){t.split(/(\s+)/).forEach(function(k){if(k)B[B.length-1].push({t:k,b:st.b,i:st.i,u:st.u,c:st.c})})}
+  (function w(n,st){Array.prototype.forEach.call(n.childNodes,function(ch){if(ch.nodeType===3){add(ch.textContent.replace(/ /g,' '),st);return}if(ch.nodeType!==1)return;
+    var g=ch.tagName,s={b:st.b,i:st.i,u:st.u,c:st.c};if(g==='B'||g==='STRONG')s.b=1;if(g==='I'||g==='EM')s.i=1;if(g==='U')s.u=1;if(ch.style&&ch.style.color)s.c=ch.style.color;
+    if(g==='BR'){B.push([]);return}if(g==='DIV'||g==='P'){if(B[B.length-1].length)B.push([]);w(ch,s);B.push([]);return}w(ch,s)})})(c,{b:0,i:0,u:0,c:null});
+  while(B.length>1&&!B[B.length-1].length)B.pop();return B}
+function rgb(c){if(!c)return null;var m=c.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);if(m)return[+m[1],+m[2],+m[3]];
+  if(c.charAt(0)==='#'){var x=c.length===4?c.slice(1).split('').map(function(k){return k+k}).join(''):c.slice(1),n=parseInt(x,16);if(!isNaN(n))return[(n>>16)&255,(n>>8)&255,n&255]}return null}
+function pdfNovo(){var J=window.jspdf.jsPDF,d=new J({unit:'pt',format:'a4'}),p=eprefs();return{d:d,y:60,m:48,W:d.internal.pageSize.getWidth()-96,H:d.internal.pageSize.getHeight()-48,sc:p.sc/100,f:p.fam==='sans'?'helvetica':'times'}}
+function pEsp(P,h){if(P.y+h>P.H){P.d.addPage();P.y=60}}
+function pTxt(P,t,o){o=o||{};var d=P.d,g=(o.gap||14)*P.sc,ind=o.ind||0;d.setFont(P.f,o.st||'normal');d.setFontSize((o.size||11)*P.sc);d.setTextColor.apply(d,o.cor||[30,30,30]);
+  d.splitTextToSize(String(t),P.W-ind).forEach(function(l){pEsp(P,g);d.text(l,P.m+ind,P.y);P.y+=g})}
+function pRich(P,html,o){o=o||{};var d=P.d,g=(o.gap||14)*P.sc,L=P.m+(o.ind||0),R=P.m+P.W;
+  blocks(html).forEach(function(runs){pEsp(P,g);if(!runs.length){P.y+=g*.6;return}var x=L;
+    runs.forEach(function(r){var st=r.b&&r.i?'bolditalic':r.b?'bold':r.i?'italic':'normal',cor=rgb(r.c)||[30,30,30],sp=!r.t.trim();
+      d.setFont(P.f,st);d.setFontSize((o.size||11)*P.sc);d.setTextColor.apply(d,cor);var w=d.getTextWidth(r.t);
+      if(sp){if(x>L)x+=w;return}if(x+w>R&&x>L){x=L;P.y+=g;pEsp(P,g)}
+      d.text(r.t,x,P.y);if(r.u){d.setDrawColor.apply(d,cor);d.setLineWidth(.6);d.line(x,P.y+1.5,x+w,P.y+1.5)}x+=w});P.y+=g})}
+function slug(t){return (t||'arquivo').normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-zA-Z0-9]+/g,'-').replace(/^-|-$/g,'').toLowerCase()||'arquivo'}
+function semPdf(){if(window.jspdf)return false;toast('Gerador de PDF indisponível — verifique a internet e recarregue.');return true}
+function pdfEs(o){if(semPdf())return;o=esNorm(o);var refs=[o.r].concat(o.pts.map(function(p){return p.r}));
+  Promise.all(refs.map(function(r){return refText(parseRef(r))})).then(function(T){
+    var P=pdfNovo(),br=[150,110,40],cz=[105,100,90],n=0;
+    pTxt(P,'ESBOÇO '+TIPOS[tpDe(o)].nome.toUpperCase(),{size:8.5,st:'bold',cor:br,gap:14});pTxt(P,o.t||'Esboço',{size:18,st:'bold',gap:22});
+    if(o.r)pTxt(P,o.r,{size:11,st:'italic',cor:br,gap:16});if(T[0])pTxt(P,'“'+T[0]+'”',{size:10.5,st:'italic',cor:cz,gap:14});P.y+=8;
+    if(!rEmpty(o.i)){pTxt(P,'Introdução',{size:12,st:'bold',gap:16});pRich(P,o.i);P.y+=8}
+    o.pts.forEach(function(p,k){var ind=p.sub?18:0;if(!p.sub)n++;pEsp(P,20);pTxt(P,((p.sub?'– ':n+'. ')+(p.s||'')).trim(),{size:p.sub?12:13,st:'bold',gap:17,ind:ind});
+      if(p.r)pTxt(P,p.r,{size:9.5,st:'italic',cor:br,gap:13,ind:ind});if(T[k+1])pTxt(P,'“'+T[k+1]+'”',{size:10,st:'italic',cor:cz,gap:13,ind:ind});
+      if(!rEmpty(p.h))pRich(P,p.h,{ind:ind});P.y+=8});
+    if(!rEmpty(o.c)){P.y+=6;pEsp(P,30);P.d.setDrawColor(200);P.d.line(P.m,P.y,P.m+P.W,P.y);P.y+=18;pTxt(P,'Conclusão',{size:12,st:'bold',gap:16});pRich(P,o.c)}
+    pdfCred(P,T.some(function(x){return x}));pdfVer(P.d.output('blob'),'esboco-'+slug(o.t)+'.pdf')})}
+/* Rodapé de crédito no PDF quando há texto bíblico da JFAAL */
+function pdfCred(P,tem){if(!tem||!embutida(verAtiva()))return;P.y+=14;pTxt(P,JFAAL.credito+' '+JFAAL.licenca,{size:8,st:'italic',cor:[120,115,105],gap:11})}
+function pdfLic(x){if(semPdf())return;refText(parseRef(x.r)).then(function(vt){var P=pdfNovo();
+  pTxt(P,x.t||'Lição',{size:18,st:'bold',gap:22});var meta=[fmtD(x.d),x.r].filter(Boolean).join(' — ');
+  if(meta)pTxt(P,meta,{size:11,st:'italic',cor:[150,110,40],gap:16});if(vt)pTxt(P,'“'+vt+'”',{size:10.5,st:'italic',cor:[105,100,90],gap:14});P.y+=8;
+  if(!rEmpty(x.n))pRich(P,x.n);pdfCred(P,!!vt);pdfVer(P.d.output('blob'),'licao-'+slug(x.t)+'.pdf')})}
+var PDFB=null,PDFN='',PDFJS='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/';
+function carregaPdfJs(){if(window.pdfjsLib)return Promise.resolve();return new Promise(function(res,rej){var s=document.createElement('script');s.src=PDFJS+'pdf.min.js';s.onload=function(){pdfjsLib.GlobalWorkerOptions.workerSrc=PDFJS+'pdf.worker.min.js';res()};s.onerror=rej;document.head.appendChild(s)})}
+function pdfVer(b,fn){PDFB=b;PDFN=fn;var o=document.getElementById('pv'),sh=false;try{sh=!!(navigator.canShare&&navigator.canShare({files:[new File([b],fn,{type:'application/pdf'})]}))}catch(e){}
+  o.innerHTML='<div class="pvbox"><div class="row" style="justify-content:space-between;margin-bottom:10px"><b>Prévia do PDF</b><span class="row"><button class="btn" onclick="saveBlob(PDFB,PDFN);toast(\'PDF salvo.\')">⬇ Baixar</button>'+(sh?'<button class="btn ghost" onclick="pdfShare()">Compartilhar</button>':'')+'<button class="btn ghost" onclick="pdfFecha()">✕ Fechar</button></span></div><div id="pvp" class="pvp"><p style="color:#ddd;text-align:center">Gerando prévia…</p></div></div>';o.classList.add('show');
+  carregaPdfJs().then(function(){return b.arrayBuffer()}).then(function(buf){return pdfjsLib.getDocument({data:buf}).promise}).then(function(pdf){var box=document.getElementById('pvp');if(!box)return;box.innerHTML='';
+    var w=Math.min(box.clientWidth-24,760)||600,dpr=Math.min(window.devicePixelRatio||1,2),p=Promise.resolve();
+    for(var i=1;i<=pdf.numPages;i++)(function(i){p=p.then(function(){return pdf.getPage(i)}).then(function(pg){var vp=pg.getViewport({scale:w/pg.getViewport({scale:1}).width*dpr}),cv=document.createElement('canvas');cv.width=vp.width;cv.height=vp.height;cv.style.width=w+'px';box.appendChild(cv);return pg.render({canvasContext:cv.getContext('2d'),viewport:vp}).promise})})(i);return p})
+   .catch(function(){var box=document.getElementById('pvp');if(box)box.innerHTML='<p style="color:#ddd;text-align:center">Não foi possível mostrar a prévia aqui, mas você pode baixar o PDF.</p>'})}
+function pdfFecha(){var o=document.getElementById('pv');o.classList.remove('show');o.innerHTML='';PDFB=null}
+function pdfShare(){navigator.share({files:[new File([PDFB],PDFN,{type:'application/pdf'})],title:PDFN}).catch(function(){})}
+
+/* EBD por classe. Cada trimestre tem os temas em sequência; a data de cada lição é o início + 7 dias por lição.
+   TRIM_MOD traz os trimestres já conhecidos; os cadastrados (ou editados) pelo usuário ficam em DATA.ebdtri e,
+   com o mesmo id, substituem o de TRIM_MOD. */
+var CLASSES=[['adu','👥 Adultos'],['jov','🔥 Jovens'],['ado','🎒 Adolescentes'],['cri','🧸 Crianças']];
+var TRIM_MOD=[
+  {id:'2026-4-jov',cls:'jov',nome:'4º Trimestre de 2026',inicio:'2026-10-04',tema:'Regozijai-vos no Senhor — Vivendo com propósito à luz da Carta aos Filipenses',temas:['Carta aos Filipenses: um chamado à alegria','Uma vida digna do Evangelho','A humildade de Cristo: o exemplo supremo','Brilhe a luz de Cristo em meio à geração corrompida','Exemplo de servos fiéis: Timóteo e Epafrodito','Guardando-se dos falsos mestres','O alvo supremo: conhecer a Cristo','Unidade e alegria no Senhor','A paz de Deus guarda o coração','O pensar cristão: o que ocupa a sua mente?','Contentamento em toda e qualquer situação','Generosidade e cuidado com a obra de Deus','Saudações finais, comunhão e bênçãos']},
+  {id:'2026-4',cls:'adu',nome:'4º Trimestre de 2026',inicio:'2026-10-04',tema:'O Deus da Aliança: Advertências, Promessas e Bênçãos no Livro de Deuteronômio',temas:['Deuteronômio: o livro da Aliança','Recapitulando a jornada no deserto','A fidelidade de Deus diante da infidelidade de Israel','O chamado à obediência','O grande mandamento','A Aliança e as bênçãos da obediência','Maldições e bênçãos da Aliança','Escolhendo a vida ou a morte','A sucessão de Moisés','O cântico de Moisés: advertência e esperança','A bênção final de Moisés','A morte de Moisés e a continuidade da promessa','O cumprimento de Deuteronômio em Cristo']}];
+function TRIS(){var u=DATA.ebdtri||[],ids={};u.forEach(function(x){ids[x.id]=1});(DATA.ebdocul||[]).forEach(function(id){ids[id]=1});return TRIM_MOD.filter(function(m){return !ids[m.id]}).concat(u).sort(function(a,b){return a.inicio<b.inicio?-1:a.inicio>b.inicio?1:0})}
+function triById(id){return TRIS().filter(function(x){return x.id===id})[0]}
+function clsAtual(){return S.cls||LS.getItem('ebd_cls')||'adu'}
+function clsNome(c){var x=CLASSES.filter(function(y){return y[0]===c})[0];return x?x[1].replace(/^\S+\s/,''):''}
+function selCls(c){S.cls=c;S.tri=null;S.trf=null;LS.setItem('ebd_cls',c);ebd()}
+function triSel(cls){var L=TRIS().filter(function(m){return m.cls===cls}),hj=iso(new Date()),t=null;L.forEach(function(m){if(m.inicio<=hj)t=m});return L.filter(function(m){return m.id===S.tri})[0]||t||L[0]||null}
+function selTri(id){S.tri=id;ebd()}
+function dataLic(m,k){var d=new Date(m.inicio+'T12:00:00');d.setDate(d.getDate()+7*k);return iso(d)}
+function licIdx(m,k){var key=m.id+'|'+k,ds=dataLic(m,k),j=-1;(DATA.ebd||[]).forEach(function(x,n){if(j<0&&(x.tk===key||(!x.tk&&m.cls==='adu'&&x.d===ds)))j=n});return j}
+function triForm(cls,t){var ult=TRIM_MOD[TRIM_MOD.length-1];
+  return '<div class="card"><h3>'+(t?'Editar':'Cadastrar')+' trimestre · '+esc(clsNome(cls))+'</h3>'+
+  '<div class="row"><div style="flex:2;min-width:180px"><label class="lbl">Nome</label><input id="tn" value="'+esc(t?t.nome:ult.nome)+'"></div><div style="flex:1;min-width:150px"><label class="lbl">Data da 1ª aula</label><input id="ti" type="date" value="'+esc(t?t.inicio:ult.inicio)+'"></div></div>'+
+  '<label class="lbl">Tema da revista (opcional)</label><input id="tg" placeholder="Tema geral do trimestre" value="'+esc(t?t.tema:'')+'">'+
+  '<label class="lbl">Temas das lições — um por linha, na ordem</label><textarea id="tl" style="min-height:260px" placeholder="Tema da lição 1&#10;Tema da lição 2&#10;…">'+esc(t?t.temas.join('\n'):'')+'</textarea>'+
+  '<p class="tag" style="margin:2px 0 0">Pode colar o sumário da revista: números como “Lição 1:” são retirados sozinhos. As datas saem automáticas, uma por semana.</p>'+
+  '<div class="ca"><button class="btn" onclick="saveTriU(\''+cls+'\')">Salvar</button><button class="btn ghost" onclick="S.trf=null;ebd()">Cancelar</button>'+
+  (t&&(DATA.ebdtri||[]).some(function(x){return x.id===t.id})?'<button class="btn ghost danger" onclick="delTriU(\''+t.id+'\')">'+(TRIM_MOD.some(function(x){return x.id===t.id})?'Restaurar temas originais':'Excluir trimestre')+'</button>':'')+'</div></div>'}
+function saveTriU(cls){var temas=v('tl').split('\n').map(function(x){return x.replace(/^\s*(li[cç][aã]o\s*)?\d+\s*[-–—:.)]*\s*/i,'').trim()}).filter(Boolean),ini=v('ti');
+  if(!ini||!temas.length){toast('Informe a data da 1ª aula e pelo menos um tema.');return}
+  var id=S.trf==='novo'?'u'+Date.now():S.trf,o={id:id,cls:cls,nome:v('tn').trim()||'Trimestre',inicio:ini,tema:v('tg').trim(),temas:temas},
+    L=(DATA.ebdtri||[]).filter(function(x){return x.id!==id});L.push(o);save('ebdtri',L);S.tri=id;S.trf=null;ebd();toast('Trimestre salvo.')}
+/* Excluir trimestre: os do usuário saem de DATA.ebdtri; os prontos (TRIM_MOD) ficam ocultos em DATA.ebdocul e podem ser restaurados. */
+function excluiTri(id){var t=triById(id);if(!t||!confirm('Excluir o trimestre “'+clsNome(t.cls)+' · '+t.nome+'”?\nAs anotações das lições continuam guardadas em “Outras lições”.'))return;
+  save('ebdtri',(DATA.ebdtri||[]).filter(function(x){return x.id!==id}));
+  if(TRIM_MOD.some(function(x){return x.id===id}))save('ebdocul',(DATA.ebdocul||[]).concat(id));
+  S.tri=null;S.trf=null;ebd();toast('Trimestre excluído.')}
+function restauraTris(cls){save('ebdocul',(DATA.ebdocul||[]).filter(function(id){var m=TRIM_MOD.filter(function(x){return x.id===id})[0];return !(m&&m.cls===cls)}));S.tri=null;ebd();toast('Trimestre restaurado.')}
+function ocultos(cls){return TRIM_MOD.filter(function(m){return m.cls===cls&&(DATA.ebdocul||[]).indexOf(m.id)>-1})}
+function delTriU(id){var orig=TRIM_MOD.some(function(x){return x.id===id});if(!confirm(orig?'Voltar aos temas originais deste trimestre?':'Excluir este trimestre? As anotações das lições continuam guardadas.'))return;
+  save('ebdtri',(DATA.ebdtri||[]).filter(function(x){return x.id!==id}));if(!orig)S.tri=null;S.trf=null;ebd()}
+function profDe(m,k){return (DATA.ebdprof||{})[m.id+'|'+k]||''}
+function setProf(key,val){var o=Object.assign({},DATA.ebdprof);val=String(val||'').trim();if(val)o[key]=val;else delete o[key];save('ebdprof',o)}
+function diaSem(ds){return new Date(ds+'T12:00:00').toLocaleDateString('pt-BR',{weekday:'short',day:'2-digit',month:'2-digit',year:'numeric'})}
+function ebd(){marca();
+  var l=load('ebd');
+  if(S.edit!==null){licEditor(l);return}
+  var cls=clsAtual(),T=TRIS(),L=T.filter(function(x){return x.cls===cls}),m=triSel(cls),hj=iso(new Date()),done=0,used={},h=tabs2(cls,CLASSES,'selCls');
+  if(S.trf){app.innerHTML=h+triForm(cls,S.trf==='novo'?null:triById(S.trf));return}
+  if(!m){app.innerHTML=h+'<div class="card"><h3>'+esc(clsNome(cls))+'</h3><p style="margin:0 0 12px">Ainda não há trimestre cadastrado para esta classe. Cadastre os temas da revista uma vez (um por linha) e as datas das lições são calculadas sozinhas.</p><div class="row"><button class="btn" onclick="S.trf=\'novo\';ebd()">+ Cadastrar trimestre</button>'+(ocultos(cls).length?'<button class="btn ghost" onclick="restauraTris(\''+cls+'\')">↺ Restaurar '+esc(ocultos(cls).map(function(x){return x.nome}).join(', '))+'</button>':'')+'</div></div>';return}
+  if(L.length>1)h+=tabs2(m.id,L.map(function(x){return[x.id,x.nome]}),'selTri');
+  T.forEach(function(t){if(t!==m)t.temas.forEach(function(_,k){var j=licIdx(t,k);if(j>=0)used[j]=1})});
+  var rows=m.temas.map(function(tm,k){var ds=dataLic(m,k),j=licIdx(m,k),x=j>=0?l[j]:null,key=m.id+'|'+k;if(j>=0)used[j]=1;if(x&&x.ok)done++;
+    return '<div class="lic'+(ds===hj?' hoje':'')+'"><div class="lich"><span class="licn">Lição '+(k+1)+'</span><span class="licd">'+esc(diaSem(ds))+(ds===hj?' · hoje':'')+'</span>'+(x&&x.ok?'<span class="licok">✓ concluída</span>':x?'<span class="licok" style="color:var(--mute)">📝 com anotações</span>':'')+'</div>'+
+    '<div class="ct">'+esc(tm)+'</div><div class="row" style="margin-top:8px;flex-wrap:nowrap"><input placeholder="Professor(a)" value="'+esc(profDe(m,k))+'" onchange="setProf(\''+key+'\',this.value)" style="flex:1;min-width:0;margin:0"><button class="btn'+(x?' ghost':'')+'" onclick="openAula(\''+m.id+'\','+k+')">'+(x?'Abrir':'Anotar')+'</button></div></div>'}).join('');
+  var tot=m.temas.length,pct=Math.round(done*100/tot),rest=l.map(function(x,i){return[x,i]}).filter(function(p){return !used[p[1]]});
+  h+='<div class="card"><h3>'+esc(clsNome(cls))+' · '+esc(m.nome)+'</h3><p class="ct" style="margin:0 0 8px">'+esc(m.tema)+'</p><p class="tag" style="margin:4px 0 6px">'+done+' de '+tot+' lições concluídas ('+pct+'%) · aulas aos domingos a partir de '+fmtD(m.inicio)+'</p><div class="bar"><div style="width:'+pct+'%"></div></div><div class="ca"><button class="btn ghost" onclick="pdfTri(\''+m.id+'\')">📄 PDF das lições</button><button class="btn ghost" onclick="S.trf=\''+m.id+'\';ebd()">✎ Editar temas</button><button class="btn ghost" onclick="S.trf=\'novo\';ebd()">+ Outro trimestre</button><button class="btn ghost danger" onclick="excluiTri(\''+m.id+'\')">🗑 Excluir trimestre</button></div></div>'+rows;
+  if(rest.length)h+='<div class="card" style="margin-top:6px"><h3>Outras lições</h3>'+rest.map(function(p){var x=p[0];return '<div class="item" onclick="S.tk=null;S.edit='+p[1]+';ebd()"><div><b>'+(x.ok?'✅ ':'')+esc(x.t||'Sem tema')+'</b><br><small>'+esc([fmtD(x.d),x.r,x.p].filter(Boolean).join(' · '))+'</small></div><span>›</span></div>'}).join('')+'</div>';
+  app.innerHTML=h;
+}
+/* PDF com a sequência das lições do trimestre: nº, data, tema e professor */
+function pdfTri(id){if(semPdf())return;var m=triById(id),P=pdfNovo(),d=P.d,sc=P.sc,br=[150,110,40],
+  cN=P.m,cD=P.m+40*sc,cT=P.m+128*sc,cP=P.m+P.W-120*sc,wT=cP-cT-12,wP=P.m+P.W-cP;
+  pTxt(P,'EBD '+clsNome(m.cls)+' — '+m.nome,{size:18,st:'bold',gap:22});if(m.tema)pTxt(P,m.tema,{size:11.5,st:'italic',cor:br,gap:15});P.y+=10;
+  function cab(){d.setFont(P.f,'bold');d.setFontSize(9*sc);d.setTextColor.apply(d,br);d.text('Nº',cN,P.y);d.text('DATA',cD,P.y);d.text('TEMA',cT,P.y);d.text('PROFESSOR(A)',cP,P.y);
+    P.y+=6;d.setDrawColor(169,129,47);d.setLineWidth(.8);d.line(P.m,P.y,P.m+P.W,P.y);P.y+=16*sc}
+  cab();
+  m.temas.forEach(function(tm,k){d.setFont(P.f,'normal');d.setFontSize(10.5*sc);var tl=d.splitTextToSize(tm,wT),pl=d.splitTextToSize(profDe(m,k)||'—',wP),n=Math.max(tl.length,pl.length),g=14*sc,h=n*g;
+    if(P.y+h>P.H){d.addPage();P.y=60;cab()}
+    d.setTextColor(30,30,30);d.setFont(P.f,'bold');d.text(String(k+1),cN,P.y);d.setFont(P.f,'normal');d.text(fmtD(dataLic(m,k)),cD,P.y);
+    tl.forEach(function(l,i){d.text(l,cT,P.y+i*g)});d.setTextColor(80,80,80);pl.forEach(function(l,i){d.text(l,cP,P.y+i*g)});
+    P.y+=h-g+8*sc;d.setDrawColor(220);d.setLineWidth(.5);d.line(P.m,P.y,P.m+P.W,P.y);P.y+=16*sc});
+  pdfVer(d.output('blob'),'ebd-'+slug(clsNome(m.cls)+'-'+m.nome)+'.pdf')}
+function openAula(id,k){var m=triById(id);if(!m)return;S.cls=m.cls;S.tri=id;var j=licIdx(m,k);S.tk=id+'|'+k;S.edit=j>=0?j:-1;ebd()}
+function licCtx(){var p=String(S.tk||'').split('|'),m=triById(p[0]);return m?{m:m,k:+p[1],key:S.tk}:null}
+function licEditor(l){var c=licCtx(),x=S.edit>=0?l[S.edit]:{d:c?dataLic(c.m,c.k):iso(new Date()),t:c?'Lição '+(c.k+1)+' — '+c.m.temas[c.k]:'',r:'',n:'',ok:false},pf=c?profDe(c.m,c.k):(x.p||'');
+  app.innerHTML='<div class="card"><h3>'+(c?esc(c.m.nome)+' · Lição '+(c.k+1):(S.edit>=0?'Editar lição':'Nova lição'))+'</h3>'+rteBar()+
+  '<div class="row"><div style="flex:1;min-width:150px"><label class="lbl">Data</label><input id="d" type="date" value="'+esc(x.d)+'"></div><div style="flex:2;min-width:180px"><label class="lbl">Professor(a)</label><input id="pf" placeholder="Nome do professor" value="'+esc(pf)+'"></div></div>'+
+  '<label class="lbl">Tema da lição</label><input id="t" placeholder="Ex.: O grande mandamento" value="'+esc(x.t)+'">'+
+  '<label class="lbl">Texto base</label><input id="r" placeholder="Ex.: Dt 6:4-9" value="'+esc(x.r)+'" oninput="prevRef(this)"><div class="vauto"></div>'+
+  '<label class="lbl">Anotações da aula</label><div id="n" class="rte" style="min-height:180px" contenteditable="true" data-ph="Objetivo, comentários, aplicação…">'+rich(x.n)+'</div>'+
+  '<label class="row" style="margin-top:10px"><input id="ok" type="checkbox"'+(x.ok?' checked':'')+'> Lição concluída</label>'+
+  '<div class="ca"><button class="btn" onclick="saveEbd()">Salvar</button><button class="btn ghost" onclick="S.edit=null;ebd()">Cancelar</button><button class="btn ghost" onclick="apresLic(curLic())">🖥 Apresentar</button><button class="btn ghost" onclick="pdfLic(curLic())">📄 PDF</button>'+
+  (S.edit>=0?'<button class="btn ghost danger" onclick="delItem(\'ebd\')">Excluir</button>':'')+'</div></div>';prevRef(document.getElementById('r'))}
+function curLic(){return{d:v('d'),t:v('t').trim(),r:v('r').trim(),p:v('pf').trim(),n:sanit(document.getElementById('n').innerHTML),ok:document.getElementById('ok').checked}}
+function saveEbd(){var l=load('ebd').slice(),o=curLic(),old=S.edit>=0?l[S.edit]:null,c=licCtx();if(old&&old.id)o.id=old.id;
+  o.tk=c?c.key:(old&&old.tk)||undefined;if(!o.tk)delete o.tk;if(c)setProf(c.key,o.p);
+  if(S.edit>=0)l[S.edit]=o;else l.push(o);save('ebd',l);S.edit=null;ebd();toast('Lição salva.')}
+function apresLic(x){presOpen([{eb:(x.d?fmtD(x.d):'EBD')+(x.p?' · '+x.p:''),hd:x.t,rf:x.r,tx:x.n}])}
+function p2(n){return n<10?'0'+n:''+n}
+function iso(d){return d.getFullYear()+'-'+p2(d.getMonth()+1)+'-'+p2(d.getDate())}
+function fmt(ds){var a=ds.split('-');return a[2]+'/'+a[1]}
+
+function v(id){return document.getElementById(id).value}
+function delItem(k){if(!confirm('Excluir?'))return;var l=load(k).slice();l.splice(S.edit,1);save(k,l);S.edit=null;S.ev=null;S.sv=null;render()}
+
+/* Bíblia: plano de leitura */
+var CH=[];ALL.forEach(function(b,i){for(var c=1;c<=b[1];c++)CH.push([i,c])});
+function rangeText(A,s,e){var out=[],cur=null;
+  for(var k=s;k<e;k++){var b=A[k][0],c=A[k][1];if(cur&&cur.b===b&&cur.e===c-1)cur.e=c;else{cur={b:b,s:c,e:c};out.push(cur)}}
+  return out.map(function(r){return ALL[r.b][0]+' '+(r.s===r.e?r.s:r.s+'–'+r.e)}).join('; ')}
+function dayRead(d){return rangeText(CH,Math.floor((d-1)*CH.length/365),Math.floor(d*CH.length/365))}
+function startPlano(){save('plano',{inicio:iso(new Date()),feitos:{}});S.pday=null;biblia()}
+function planoSel(){var id=S.pid||'ano',l=DATA.planos||[];
+  if(id!=='ano')for(var i=0;i<l.length;i++)if(l[i].id===id){var q=l[i];return{id:id,nome:q.nome,N:q.dias.length,P:q,idx:i,read:function(d){return q.dias[d-1]}}}
+  S.pid='ano';return{id:'ano',nome:'Bíblia em 1 ano',N:365,P:DATA.plano||{},ano:true,read:dayRead}}
+function saveSel(sel,P){if(sel.ano)save('plano',P);else{var l=DATA.planos.slice();l[sel.idx]=P;save('planos',l)}}
+function navDia(n){S.pday=Math.max(1,Math.min(planoSel().N,n));biblia()}
+function togDia(d){var y=window.scrollY,sel=planoSel(),P=JSON.parse(JSON.stringify(sel.P));P.feitos=P.feitos||{};P.feitos[d]=!P.feitos[d];if(!P.feitos[d])delete P.feitos[d];saveSel(sel,P);biblia();window.scrollTo(0,y)}
+function diaPlano(P,d){var t=new Date(P.inicio+'T12:00:00');t.setDate(t.getDate()+d-1);return iso(t)}
+function hojePlano(P,N){return Math.max(1,Math.min(N,Math.floor((Date.now()-new Date(P.inicio+'T00:00:00').getTime())/864e5)+1))}
+function irDia(d,flash){var el=document.getElementById('pd'+d);if(!el)return;el.scrollIntoView({block:'center',behavior:flash?'smooth':'auto'});if(flash){el.classList.remove('flash');void el.offsetWidth;el.classList.add('flash')}}
+function marcaAtrasados(){var y=window.scrollY,sel=planoSel(),P=JSON.parse(JSON.stringify(sel.P)),h=hojePlano(P,sel.N),F=P.feitos=P.feitos||{},n=0;
+  for(var d=1;d<h;d++)if(!F[d]){F[d]=true;n++}if(!n)return;if(!confirm('Marcar '+n+' dia(s) atrasado(s) como lidos?'))return;saveSel(sel,P);biblia();window.scrollTo(0,y);toast(n+' dia(s) marcado(s) como lido(s).')}
+/* Abre na aba Ler o primeiro capítulo da leitura do dia (ex.: "Gênesis 1–3; Salmos 5" → Gênesis 1) */
+function abreLeitura(d){var t=String(planoSel().read(d)||''),m=t.match(/^\s*(.+?)\s+(\d+)/),b=m?bookIdx(m[1]):-1;
+  if(b<0){toast('Não reconheci o livro desta leitura.');return}S.book=b;S.chap=Math.min(+m[2],ALL[b][1]);S.verse=null;S.cmp=false;S.bt='ler';biblia();window.scrollTo(0,0)}
+function resetPlano(){if(confirm('Reiniciar o plano e apagar o progresso?')){save('plano',{});S.pday=null;biblia()}}
+function delPlano(){var sel=planoSel();if(sel.ano||!confirm('Excluir o plano “'+sel.nome+'”?'))return;var l=DATA.planos.slice();l.splice(sel.idx,1);save('planos',l);S.pid='ano';S.pday=null;biblia()}
+function selPlano(id){S.pid=id;S.pday=null;S.novo=false;biblia()}
+function planoView(){var sel=planoSel(),P=sel.P,l=DATA.planos||[];
+  var tabs='<div class="books" style="margin-bottom:12px"><div class="chip'+(sel.id==='ano'&&!S.novo?' on':'')+'" onclick="selPlano(\'ano\')">Bíblia em 1 ano</div>'+
+    l.map(function(p){return '<div class="chip'+(sel.id===p.id&&!S.novo?' on':'')+'" onclick="selPlano(\''+p.id+'\')">'+esc(p.nome)+'</div>'}).join('')+
+    '<div class="chip'+(S.novo?' on':'')+'" onclick="S.novo=true;biblia()">＋ Criar meu plano</div></div>';
+  if(S.novo)return tabs+novoPlanoForm();
+  if(!P.inicio)return tabs+'<div class="card"><h3>Plano: Bíblia em 1 ano</h3><p class="tag">Toda a Bíblia em 365 dias, na ordem dos livros (cerca de 3 a 4 capítulos por dia).</p><button class="btn" onclick="startPlano()">Iniciar hoje</button></div>';
+  var N=sel.N,hoje=hojePlano(P,N),F=P.feitos||{},n=0,atr=0,prox=0,rows='';
+  for(var d=1;d<=N;d++){var ok=!!F[d],at=!ok&&d<hoje;if(ok)n++;if(at)atr++;if(!prox&&!ok)prox=d;
+    rows+='<div class="pdia'+(d===hoje?' hoje':'')+(ok?' lido':'')+'" id="pd'+d+'"><button class="chk'+(ok?' on':'')+'" title="'+(ok?'Lido — desmarcar':'Marcar como lido')+'" onclick="togDia('+d+')">✓</button>'+
+      '<div class="fx" onclick="abreLeitura('+d+')" title="Abrir na Bíblia"><small>Dia '+d+' · '+esc(diaSem(diaPlano(P,d)))+(d===hoje?' · hoje':'')+(at?' · <span class="atr">atrasado</span>':'')+'</small><b>'+esc(sel.read(d))+'</b></div></div>'}
+  var pct=Math.round(n*100/N);
+  return tabs+'<div class="card"><h3>'+esc(sel.nome)+'</h3><p class="tag" style="margin:0 0 6px">Hoje é o dia '+hoje+' de '+N+' · '+n+' lido(s) ('+pct+'%)'+(atr?' · <b class="atr">'+atr+' atrasado(s)</b>':'')+'</p><div class="bar"><div style="width:'+pct+'%"></div></div>'+
+  '<div class="ca">'+(prox?'<button class="btn" onclick="irDia('+prox+',1)">▶ Continuar de onde parei (dia '+prox+')</button>':'<span class="tag">🎉 Plano concluído!</span>')+'<button class="btn ghost" onclick="irDia('+hoje+',1)">📅 Ir para hoje</button>'+
+  (atr?'<button class="btn ghost" onclick="marcaAtrasados()">✓ Marcar atrasados como lidos</button>':'')+(sel.ano?'<button class="btn ghost" onclick="resetPlano()">Reiniciar plano</button>':'<button class="btn ghost danger" onclick="delPlano()">Excluir plano</button>')+'</div>'+
+  '<p class="tag" style="margin:10px 0 0">Toque no ✓ para marcar o dia; toque na leitura para abrir o capítulo.</p></div><div class="card" style="padding:4px 10px">'+rows+'</div>'}
+function novoPlanoForm(){var op=ALL.map(function(b,i){return '<option value="'+i+'">'+esc(b[0])+'</option>'}).join('');
+  return '<div class="card"><h3>Criar meu plano</h3><input id="pn" placeholder="Nome do plano (ex.: Novo Testamento em 90 dias)"><label class="tag">Início</label><input id="pi" type="date" value="'+iso(new Date())+'">'+
+  '<label class="tag">Modelos rápidos</label><div class="books" style="margin-bottom:6px">'+PRE.map(function(x){return '<div class="chip" onclick="preset('+x[1]+','+x[2]+','+x[3]+',\''+x[0]+' em '+x[3]+' dias\')">'+x[0]+'</div>'}).join('')+'</div><label class="tag">Como montar</label><select id="pm" onchange="document.getElementById(\'pmL\').style.display=this.value===\'l\'?\'\':\'none\';document.getElementById(\'pmM\').style.display=this.value===\'m\'?\'\':\'none\'"><option value="l">Por livros (divide automaticamente)</option><option value="m">Lista manual (uma leitura por dia)</option></select>'+
+  '<div id="pmL"><label class="tag">De</label><select id="pa" onchange="prevPlano()">'+op+'</select><label class="tag">Até</label><select id="pb" onchange="prevPlano()">'+op+'</select><label class="tag">Duração (dias)</label><input id="pd" type="number" min="1" max="730" value="30" oninput="prevPlano()"></div>'+
+  '<div id="pmM" style="display:none"><textarea id="pt" oninput="prevPlano()" placeholder="Uma leitura por dia, uma por linha. Ex.:\nJoão 1\nJoão 2–3\nSalmos 23"></textarea></div>'+
+  '<p class="tag" id="pprev"></p><div class="row" style="margin-top:8px"><button class="btn" onclick="criarPlano()">Criar plano</button><button class="btn ghost" onclick="S.novo=false;biblia()">Cancelar</button></div></div>'}
+var PRE=[['Novo Testamento',39,65,90],['Antigo Testamento',0,38,365],['Evangelhos',39,42,30],['Salmos',18,18,30],['Provérbios',19,19,31],['Bíblia toda',0,65,365]];
+function gerarDias(){if(v('pm')==='m')return v('pt').split('\n').map(function(x){return x.trim()}).filter(Boolean);
+  var a=+v('pa'),b=+v('pb'),N=Math.max(1,Math.min(730,+v('pd')||30));if(b<a)return 'O livro final vem antes do inicial.';
+  var seg=CH.filter(function(x){return x[0]>=a&&x[0]<=b}),tot=seg.length,out=[];N=Math.min(N,tot);
+  for(var d=1;d<=N;d++)out.push(rangeText(seg,Math.floor((d-1)*tot/N),Math.floor(d*tot/N)));return out}
+function prevPlano(){var el=document.getElementById('pprev');if(!el)return;var r=gerarDias();
+  el.textContent=typeof r==='string'?r:(r.length?'Prévia — dia 1: '+r[0]+'  ·  dia '+r.length+': '+r[r.length-1]:'')}
+function preset(a,b,n,nome){document.getElementById('pa').value=a;document.getElementById('pb').value=b;document.getElementById('pd').value=n;
+  if(!v('pn').trim())document.getElementById('pn').value=nome;document.getElementById('pm').value='l';document.getElementById('pmL').style.display='';document.getElementById('pmM').style.display='none';prevPlano()}
+function criarPlano(){var nome=v('pn').trim(),ini=v('pi'),dias=gerarDias();
+  if(!nome||!ini){toast('Informe o nome e a data de início.');return}
+  if(typeof dias==='string'){toast(dias);return}
+  if(!dias.length){toast('O plano ficou vazio.');return}
+  var l=(DATA.planos||[]).slice(),id='p'+Date.now();l.push({id:id,nome:nome,inicio:ini,dias:dias,feitos:{}});save('planos',l);S.pid=id;S.novo=false;S.pday=null;biblia();toast('Plano criado!')}
+function biblia(){marca();var b=S.bt||'ler',t=[['ler','📖 Ler'],['busca','🔍 Buscar'],['anot','📝 Anotações'],['marc','🔖 Marcadores'],['plano','🗓️ Plano'],['vers','📚 Versões']].map(function(x){return '<div class="chip'+(b===x[0]?' on':'')+'" onclick="S.bt=\''+x[0]+'\';biblia()">'+x[1]+'</div>'}).join('');
+  app.innerHTML='<div class="books" style="margin-bottom:12px">'+t+'</div>'+(b==='plano'?planoView():b==='vers'?versView():b==='anot'?anotView():b==='marc'?marcView():b==='busca'?buscaView():lerBiblia());
+  if(b==='ler'){if(S.cmp)paintPanes();else showTxt()}if(b==='plano'&&S.novo)prevPlano();
+  if(b==='plano'&&!S.novo){var ps=planoSel();if(ps.P.inicio&&S.pjs!==ps.id){S.pjs=ps.id;irDia(hojePlano(ps.P,ps.N))}}else S.pjs=null;if(b==='anot')drawAnot();if(b==='vers')statsVers();
+  if(b==='busca'){if(BR)drawBusca();else{var qi=document.getElementById('bqw');if(qi&&matchMedia('(pointer:fine)').matches)qi.focus()}}}
+
+/* Busca por palavra ou frase, sem diferenciar maiúsculas e acentos ("graca" acha "graça").
+   O texto "dobrado" de cada versão é montado uma vez e fica em memória (FOLD) para as próximas buscas. */
+var BR=null,BRK='',FOLD={};
+function dobraR(s){s=String(s||'');var f=s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();if(f.length===s.length)return f;
+  f='';for(var i=0;i<s.length;i++){var c=s.charAt(i).normalize('NFD').charAt(0).toLowerCase();f+=c.length===1?c:s.charAt(i)}return f}
+function foldVers(id){if(FOLD[id])return Promise.resolve(FOLD[id]);return getVers(id).then(function(L){FOLD[id]=(L||[]).map(function(bk){return (bk||[]).map(function(ch){return (ch||[]).map(dobraR)})});return FOLD[id]})}
+function buscaView(){var id=S.bvi&&ex(S.bvi)?S.bvi:verAtiva(),sc=S.bs==null?'all':String(S.bs);
+  if(!VMETA.length)return vazio('Nenhuma versão instalada — importe uma na aba “Versões” para poder buscar.');
+  var vo=VMETA.map(function(m){return '<option value="'+m.id+'"'+(m.id===id?' selected':'')+'>'+esc(m.nome)+'</option>'}).join(''),
+      so=[['all','Bíblia toda'],['at','Antigo Testamento'],['nt','Novo Testamento']].concat(ALL.map(function(b,i){return[String(i),b[0]]})).map(function(o){return '<option value="'+o[0]+'"'+(o[0]===sc?' selected':'')+'>'+esc(o[1])+'</option>'}).join('');
+  return '<div class="card"><div class="row" style="flex-wrap:nowrap"><input id="bqw" placeholder="Palavra ou frase (ex.: graça, amor de Deus)" value="'+esc(S.bq||'')+'" autocomplete="off" enterkeyhint="search" onkeydown="if(event.key===\'Enter\')fazBusca()" style="flex:1;min-width:0"><button class="btn" onclick="fazBusca()">🔍 Buscar</button></div>'+
+  '<div class="row"><select id="bqv" style="flex:1;min-width:110px">'+vo+'</select><select id="bqs" style="flex:2;min-width:150px">'+so+'</select><label class="tag" style="white-space:nowrap"><input id="bqx" type="checkbox"'+(S.bx?' checked':'')+'>Palavra inteira</label></div></div><div id="bres"></div>'}
+function fazBusca(){var q=v('bqw').trim();S.bq=q;S.bvi=v('bqv');S.bs=v('bqs');S.bx=document.getElementById('bqx').checked;S.bf=null;S.bn=150;
+  var fq=dobraR(q).replace(/\s+/g,' ');if(fq.replace(/\s/g,'').length<2){toast('Digite pelo menos 2 letras.');return}
+  var box=document.getElementById('bres');box.innerHTML='<p class="tag" style="text-align:center">Buscando…</p>';
+  foldVers(S.bvi).then(function(F){var de=0,ate=65,R=[],re=new RegExp((S.bx?'(?:^|[^a-z0-9])(':'(')+fq.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')'+(S.bx?'(?=$|[^a-z0-9])':''),'g');
+    if(S.bs==='at')ate=38;else if(S.bs==='nt')de=39;else if(S.bs!=='all')de=ate=+S.bs;
+    for(var b=de;b<=ate;b++)(F[b]||[]).forEach(function(ch,c){ch.forEach(function(f,i){if(f.indexOf(fq)<0)return;var m,pos=[];re.lastIndex=0;
+      while((m=re.exec(f))){var st=m.index+m[0].length-m[1].length;pos.push([st,st+m[1].length])}if(pos.length)R.push({b:b,c:c+1,v:i+1,p:pos})})});
+    BR=R;BRK=S.bvi;drawBusca()}).catch(function(){box.innerHTML=vazio('Não foi possível ler esta versão.')})}
+function drawBusca(){var box=document.getElementById('bres'),L=VCACHE[BRK];if(!box||!BR||!L)return;var cnt={},R=BR;R.forEach(function(r){cnt[r.b]=(cnt[r.b]||0)+1});
+  if(!R.length){box.innerHTML=vazio('Nenhum versículo encontrado para “'+esc(S.bq)+'”.');return}
+  var F=S.bf!=null?R.filter(function(r){return r.b===S.bf}):R,ks=Object.keys(cnt).map(Number).sort(function(a,b){return a-b});
+  var h='<div class="card"><b>'+R.length.toLocaleString('pt-BR')+' versículo(s)</b> <span class="tag">com “'+esc(S.bq)+'” em '+ks.length+' livro(s)</span><div class="books" style="margin-top:10px"><div class="chip sm'+(S.bf==null?' on':'')+'" onclick="S.bf=null;S.bn=150;drawBusca()">Todos</div>'+
+    ks.map(function(b){return '<div class="chip sm'+(S.bf===b?' on':'')+'" title="'+esc(ALL[b][0])+'" onclick="S.bf='+b+';S.bn=150;drawBusca()">'+ABR[b]+' · '+cnt[b]+'</div>'}).join('')+'</div></div>';
+  h+=F.slice(0,S.bn||150).map(function(r){var t=(L[r.b]&&L[r.b][r.c-1]&&L[r.b][r.c-1][r.v-1])||'',o='',a=0;
+    r.p.forEach(function(p){o+=esc(t.slice(a,p[0]))+'<mark>'+esc(t.slice(p[0],p[1]))+'</mark>';a=p[1]});o+=esc(t.slice(a));
+    return '<div class="bres" onclick="abreRes('+r.b+','+r.c+','+r.v+')"><b class="cref">'+esc(ALL[r.b][0]+' '+r.c+':'+r.v)+'</b><div class="bt">'+o+'</div></div>'}).join('')+(embutida(BRK)?credCurto():'');
+  if(F.length>(S.bn||150))h+='<div class="row" style="justify-content:center;margin:10px 0"><button class="btn ghost" onclick="S.bn=(S.bn||150)+150;drawBusca()">Mostrar mais ('+(F.length-(S.bn||150))+' restantes)</button></div>';
+  box.innerHTML=h}
+function abreRes(b,c,v){S.va=BRK;S.book=b;S.chap=c;S.verse=v;S.cmp=false;S.bt='ler';biblia();window.scrollTo(0,0)}
+
+/* Versões da Bíblia (guardadas no aparelho, em IndexedDB) */
+var IDB=null,VMETA=[],VCACHE={};
+function idb(){return new Promise(function(res,rej){if(IDB)return res(IDB);var r=indexedDB.open('estudo-biblia',2);r.onupgradeneeded=function(){var d=r.result;['meta','dados','backup'].forEach(function(n){if(!d.objectStoreNames.contains(n))d.createObjectStore(n,{keyPath:'id'})})};r.onsuccess=function(){IDB=r.result;res(IDB)};r.onerror=function(){rej(r.error)}})}
+function tx(st,mode,fn){return idb().then(function(d){return new Promise(function(res,rej){var t=d.transaction(st,mode),q=fn(t.objectStore(st));t.oncomplete=function(){res(q&&q.result)};t.onerror=function(){rej(t.error)}})})}
+function loadMeta(){return tx('meta','readonly',function(s){return s.getAll()}).then(function(m){VMETA=m||[];if(view==='biblia')biblia();else if(view==='home')fillVd()}).catch(function(){})}
+function getVers(id){if(VCACHE[id])return Promise.resolve(VCACHE[id]);return tx('dados','readonly',function(s){return s.get(id)}).then(function(r){if(r)VCACHE[id]=r.livros;return VCACHE[id]})}
+function toArr(x){if(Array.isArray(x))return x;if(x&&typeof x==='object')return Object.keys(x).sort(function(a,b){return (parseInt(a)||0)-(parseInt(b)||0)}).map(function(k){return x[k]});return null}
+function normalize(j){var bs=toArr(j&&(j.books||j.livros)||j);if(!bs||bs.length!==66)return null;
+  return bs.map(function(b){var ch=toArr((b&&(b.chapters||b.capitulos))||b);return ch.map(function(c){return toArr(c).map(String)})})}
+var SQLJS='https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/';
+var MB=[10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,190,220,230,240,250,260,290,300,310,330,340,350,360,370,380,390,400,410,420,430,440,450,460,470,480,490,500,510,520,530,540,550,560,570,580,590,600,610,620,630,640,650,660,670,680,690,700,710,720,730];
+function limpa(t){return String(t==null?'':t).replace(/<S>[^<]*<\/S>/gi,'').replace(/<RF>[\s\S]*?<Rf>/gi,'').replace(/<[^>]*>/g,'').replace(/\s+/g,' ').trim()}
+function montaBiblia(rows){var set={},num=true,i,map={};rows.forEach(function(r){set[r[0]]=1});var ks=Object.keys(set);
+  ks.forEach(function(k){if(k===''||isNaN(+k))num=false});
+  if(num){var ns=ks.map(Number),mx=Math.max.apply(null,ns),mn=Math.min.apply(null,ns);ks.forEach(function(k){var n=+k;map[k]=mx>66?MB.indexOf(n):(mn===0?n:n-1)})}
+  else ks.forEach(function(k){var n=norm(k),b=-1;
+    for(i=0;i<66&&b<0;i++)if(norm(ALL[i][0])===n||norm(ABR[i])===n)b=i;
+    for(i=0;i<66&&b<0;i++){var f=norm(ALL[i][0]);if(f.indexOf(n)===0||n.indexOf(f)===0)b=i}map[k]=b});
+  if(!num){var ok={};ks.forEach(function(k){if(map[k]>=0)ok[map[k]]=1});if(Object.keys(ok).length<Math.max(20,ks.length*0.9))return null}
+  var L=[],cnt=0;for(i=0;i<66;i++)L.push([]);
+  rows.forEach(function(r){var b=map[r[0]],c=+r[1],vs=+r[2];if(b==null||b<0||b>65||!(c>0)||!(vs>0))return;
+    var ch=L[b];while(ch.length<c)ch.push([]);var A=ch[c-1];while(A.length<vs)A.push('');A[vs-1]=limpa(r[3]);cnt++});
+  return cnt>=1000?L:null}
+function mapCols(cols){var low=cols.map(function(c){return String(c).toLowerCase()});
+  function f(ns){for(var i=0;i<ns.length;i++){var k=low.indexOf(ns[i]);if(k>=0)return cols[k]}return null}
+  var b=f(['book_number','booknumber','book_id','bookid','book_abbrev','abbrev','book','livro','b']),c=f(['chapter','chapter_number','chapternumber','capitulo','c']),v=f(['verse','verse_number','versenumber','versiculo','v']),t=f(['text','scripture','verse_text','versetext','texto','t','content']);
+  return b&&c&&v&&t?{b:b,c:c,v:v,t:t}:null}
+function qsql(db,sql){var r=db.exec(sql);return r.length?r[0]:{columns:[],values:[]}}
+function extraiSql(db){var best=null,bn=0;
+  qsql(db,"select name from sqlite_master where type in ('table','view')").values.forEach(function(r){var t=r[0],m=mapCols(qsql(db,'pragma table_info("'+t+'")').values.map(function(x){return x[1]}));if(!m)return;
+    var n=qsql(db,'select count(*) from "'+t+'"').values[0][0];if(n>bn){bn=n;best={t:t,m:m}}});
+  if(!best)return null;var M=best.m;
+  return montaBiblia(qsql(db,'select "'+M.b+'","'+M.c+'","'+M.v+'","'+M.t+'" from "'+best.t+'"').values)}
+function carregaSql(){if(window.initSqlJs)return Promise.resolve();return new Promise(function(res,rej){var sc=document.createElement('script');sc.src=SQLJS+'sql-wasm.js';sc.onload=res;sc.onerror=function(){rej(new Error('não foi possível carregar o leitor de SQLite (é preciso internet na primeira vez)'))};document.head.appendChild(sc)})}
+function lerSqlite(buf){return carregaSql().then(function(){return initSqlJs({locateFile:function(f){return SQLJS+f}})}).then(function(SQL){var db=new SQL.Database(new Uint8Array(buf));try{return extraiSql(db)}finally{db.close()}})}
+/* CSV com colunas livro, capítulo, versículo e texto (livro por nome, sigla ou número) */
+function csvSplit(l,s){var out=[],cur='',q=false;for(var i=0;i<l.length;i++){var ch=l[i];if(q){if(ch==='"'){if(l[i+1]==='"'){cur+='"';i++}else q=false}else cur+=ch}else if(ch==='"')q=true;else if(ch===s){out.push(cur);cur=''}else cur+=ch}out.push(cur);return out}
+function lerCsv(t){var ls=t.split(/\r?\n/).filter(function(l){return l.trim()});if(ls.length<2)return null;
+  var sep=ls[0].indexOf('\t')>-1?'\t':(ls[0].indexOf(';')>-1&&ls[0].indexOf(',')<0)?';':',',h=csvSplit(ls[0],sep).map(function(x){return x.trim()}),M=mapCols(h);if(!M)return null;
+  var ib=h.indexOf(M.b),ic=h.indexOf(M.c),iv=h.indexOf(M.v),it=h.indexOf(M.t),rows=[],num=true;
+  for(var i=1;i<ls.length;i++){var c=csvSplit(ls[i],sep);rows.push([String(c[ib]||'').trim(),c[ic],c[iv],it===h.length-1?c.slice(it).join(sep):c[it]]);if(isNaN(+rows[rows.length-1][0]))num=false}
+  if(!num)rows=rows.map(function(r){return[bookIdx(r[0])+1,r[1],r[2],r[3]]}).filter(function(r){return r[0]>0});
+  return montaBiblia(rows)}
+function importVers(){var f=document.getElementById('vf').files[0],nome=v('vn').trim(),comp=v('vc').trim();
+  if(!f||!nome){toast('Escolha o arquivo e dê um nome à versão (ex.: ACF).');return}
+  var r=new FileReader();r.onload=function(){var buf=r.result,sq=new TextDecoder().decode(new Uint8Array(buf,0,Math.min(15,buf.byteLength)))==='SQLite format 3',p;
+    if(sq){toast('Lendo o banco SQLite…');p=lerSqlite(buf)}
+    else{var txt=new TextDecoder().decode(buf).replace(/^﻿/,''),L=null;
+      if(/\.(csv|tsv|txt)$/i.test(f.name)||!/^\s*[\[{]/.test(txt))L=lerCsv(txt);else try{L=normalize(JSON.parse(txt))}catch(e){}p=Promise.resolve(L)}
+    p.then(function(L){if(!L){toast('Formato não reconhecido. Envie um exemplo para eu adaptar o leitor.');return}salvarVersao(L,nome,comp)}).catch(function(e){toast('Não foi possível ler o arquivo: '+(e&&e.message||e))})};
+  r.readAsArrayBuffer(f)}
+function salvarVersao(L,nome,comp){var id='v'+Date.now();
+  tx('dados','readwrite',function(s){return s.put({id:id,livros:L})}).then(function(){return tx('meta','readwrite',function(s){return s.put({id:id,nome:nome,completo:comp})})})
+   .then(function(){VCACHE[id]=L;S.va=id;if(navigator.storage&&navigator.storage.persist)navigator.storage.persist();return loadMeta()})
+   .then(function(){toast('Versão “'+nome+'” salva neste aparelho.'+(cfgOk()?' Enviando para os outros aparelhos…':''));syncVers()}).catch(function(){toast('Não foi possível salvar (armazenamento cheio ou bloqueado).')})}
+function apagaLocal(id){return tx('dados','readwrite',function(s){return s.delete(id)}).then(function(){return tx('meta','readwrite',function(s){return s.delete(id)})}).then(function(){delete VCACHE[id]})}
+/* JFAAL (João Ferreira de Almeida Atualizada Livre), embutida no site: licença CC BY 3.0 BR (texto) e MIT (projeto).
+   O autor pede que a fonte e o autor sejam mencionados; o crédito aparece sempre que o texto dela é exibido ou copiado.
+   Fica fora da sincronização (cada aparelho instala do próprio site) e não pode ser removida. */
+var JFAAL={id:'jfaal',nome:'JFAAL',completo:'João Ferreira de Almeida Atualizada Livre',arq:'biblia-jfaal.json',fonte:'https://github.com/BibliaJFAAL/JFAAL',lic:'http://creativecommons.org/licenses/by/3.0/br/',
+  credito:'As Escrituras em português são da JFAAL, Copyright © Marcos Cristiano Alves Ferreira. Setembro de 2024.',
+  licenca:'Licença Creative Commons Atribuição 3.0 Brasil (http://creativecommons.org/licenses/by/3.0/br/). Reprodução permitida desde que devidamente mencionados a fonte e o autor.'};
+function embutida(id){return id===JFAAL.id}
+function credCurtoTxt(){return 'JFAAL, Copyright © Marcos Cristiano Alves Ferreira (set/2024) · CC BY 3.0 BR · '+JFAAL.fonte}
+function credCurto(){return '<p class="tag" style="margin:10px 0 0;font-size:.74rem">Texto bíblico: JFAAL, Copyright © Marcos Cristiano Alves Ferreira, setembro de 2024 · <a href="'+JFAAL.lic+'" target="_blank" rel="noopener" style="color:var(--acc)">CC BY 3.0 BR</a> · <a href="#" onclick="creditos(event);return false" style="color:var(--acc)">créditos</a></p>'}
+function credCompleto(){return '<p style="margin:0 0 6px">'+esc(JFAAL.credito)+'</p><p style="margin:0 0 6px">Licença <a href="'+JFAAL.lic+'" target="_blank" rel="noopener" style="color:var(--acc)">Creative Commons Atribuição 3.0 Brasil</a>. Reprodução permitida desde que devidamente mencionados a fonte e o autor.</p>'+
+  '<p style="margin:0">Fonte: <a href="'+JFAAL.fonte+'" target="_blank" rel="noopener" style="color:var(--acc)">github.com/BibliaJFAAL/JFAAL</a> — projeto sob Licença MIT, Copyright (c) 2024 BibliaJFAAL. Arquivo com a licença completa: <a href="biblia-jfaal-creditos.txt" target="_blank" style="color:var(--acc)">biblia-jfaal-creditos.txt</a>.</p>'}
+function creditos(e){if(e)e.stopPropagation();S.mcred=true;var m=document.getElementById('menu');m.classList.add('show');drawMenu();var c=document.getElementById('mcred');if(c)c.scrollIntoView({block:'nearest'})}
+function instalaJfaal(){return tx('meta','readonly',function(s){return s.get(JFAAL.id)}).then(function(m){if(m)return;
+  return fetch(JFAAL.arq).then(function(r){if(!r.ok)throw new Error('sem arquivo');return r.json()}).then(function(L){if(!Array.isArray(L)||L.length!==66)throw new Error('formato');
+    return tx('dados','readwrite',function(s){return s.put({id:JFAAL.id,livros:L})}).then(function(){return tx('meta','readwrite',function(s){return s.put({id:JFAAL.id,nome:JFAAL.nome,completo:JFAAL.completo,embutida:true})})})
+     .then(function(){VCACHE[JFAAL.id]=L;return loadMeta()})})}).catch(function(){})}
+function delVers(id){if(embutida(id)){toast('A JFAAL faz parte do app e não pode ser removida.');return}var nv=cfgOk();if(!confirm(nv?'Remover esta versão de todos os aparelhos?':'Remover esta versão deste aparelho?'))return;
+  (nv?vRpc('biblia_excluir',{versao:id}):Promise.resolve()).then(function(){save('vdel',(DATA.vdel||[]).concat(id));return apagaLocal(id)}).then(loadMeta)
+   .catch(function(){toast('Sem conexão com a nuvem — a versão não foi removida.')})}
+function renVers(id){var m=VMETA.filter(function(x){return x.id===id})[0];if(!m||embutida(id))return;var s=prompt('Sigla da versão:',m.nome);if(s===null||!s.trim())return;var c=prompt('Nome completo (opcional):',m.completo||'');if(c===null)return;
+  var nm={id:id,nome:s.trim(),completo:c.trim()};
+  (cfgOk()&&VNUVEM[id]?vRpc('biblia_registrar',{versao:id,nome:nm.nome,completo:nm.completo}):Promise.resolve()).then(function(){return tx('meta','readwrite',function(st){return st.put(nm)})})
+   .then(loadMeta).then(function(){toast('Versão renomeada.')}).catch(function(){toast('Sem conexão com a nuvem — a versão não foi renomeada.')})}
+function statsVers(){VMETA.forEach(function(m){getVers(m.id).then(function(L){var el=document.getElementById('vs_'+m.id);if(!el||!L)return;var b=0,c=0,n=0;
+  L.forEach(function(bk){var t=0;(bk||[]).forEach(function(ch){if(ch&&ch.length){c++;n+=ch.length;t=1}});b+=t});el.textContent=b+' livro(s) · '+c+' capítulo(s) · '+n.toLocaleString('pt-BR')+' versículo(s)'})})}
+
+/* Sincronização das versões com o Supabase: o texto vai em partes (a nuvem só lista a versão depois de completa).
+   Versão local que não está na nuvem: se foi removida em outro aparelho (DATA.vdel), sai daqui; senão, é enviada. */
+var VSYNC=null,VNUVEM={};
+function vRpc(fn,body){var c=code();if(!c)return Promise.reject(new Error('sem código'));body.codigo=c;return rpc(fn,body)}
+function enviarVersao(m){return getVers(m.id).then(function(L){
+  var gs=[],g={},n=0;L.forEach(function(b,i){var s=JSON.stringify(b).length;if(n&&n+s>1500000){gs.push(g);g={};n=0}g[i]=b;n+=s});gs.push(g);
+  var p=Promise.resolve();gs.forEach(function(g,i){p=p.then(function(){setStatus('Enviando '+m.nome+'… '+Math.round(i*100/gs.length)+'%');return vRpc('biblia_gravar_livros',{versao:m.id,livros:g})})});
+  return p.then(function(){return vRpc('biblia_registrar',{versao:m.id,nome:m.nome,completo:m.completo||''})})})}
+function baixarVersao(m){var L=[],p=Promise.resolve();
+  for(var i=0;i<66;i+=11)(function(de){p=p.then(function(){setStatus('Baixando '+m.nome+'… '+Math.round(de*100/66)+'%');
+    return vRpc('biblia_ler',{versao:m.id,de:de,ate:de+10}).then(function(o){for(var k in o)L[+k]=o[k]})})})(i);
+  return p.then(function(){for(var j=0;j<66;j++)if(!L[j])throw new Error('versão incompleta na nuvem');
+    return tx('dados','readwrite',function(s){return s.put({id:m.id,livros:L})})})
+   .then(function(){VCACHE[m.id]=L;return tx('meta','readwrite',function(s){return s.put({id:m.id,nome:m.nome,completo:m.completo})})})}
+function syncVers(){if(!cfgOk())return Promise.resolve();if(VSYNC)return VSYNC;var mud=false;
+  VSYNC=Promise.all([vRpc('biblia_listar',{}),tx('meta','readonly',function(s){return s.getAll()})]).then(function(r){
+    var nv=r[0]||[],loc=r[1]||[],del=DATA.vdel||[],p=Promise.resolve();VNUVEM={};nv.forEach(function(m){VNUVEM[m.id]=1});
+    loc.forEach(function(m){if(VNUVEM[m.id]||embutida(m.id))return;
+      if(del.indexOf(m.id)>-1)p=p.then(function(){mud=true;return apagaLocal(m.id)});
+      else p=p.then(function(){mud=true;return enviarVersao(m).then(function(){VNUVEM[m.id]=1})})});
+    nv.forEach(function(m){var x=loc.filter(function(y){return y.id===m.id})[0];
+      if(!x)p=p.then(function(){mud=true;return baixarVersao(m)});
+      else if(x.nome!==m.nome||(x.completo||'')!==(m.completo||''))p=p.then(function(){mud=true;return tx('meta','readwrite',function(s){return s.put({id:m.id,nome:m.nome,completo:m.completo})})})});
+    return p.then(function(){if(mud){setStatus('☁ Sincronizado');toast('Versões da Bíblia sincronizadas.')}})})
+   .catch(bad).then(function(){VSYNC=null;if(mud)return loadMeta()});
+  return VSYNC}
+function versView(){return '<div class="card"><h3>Adicionar versão</h3><p class="tag">Aceita banco SQLite de Bíblia (MyBible, MySword e similares), JSON com os 66 livros (como os de github.com/damarals/biblias) ou CSV com as colunas livro, capítulo, versículo e texto. '+(cfgOk()?'Você importa uma vez e ela vai para todos os seus aparelhos.':'Você importa uma vez e ela fica guardada neste aparelho.')+'</p><input id="vf" type="file" accept=".json,.csv,.tsv,.txt,.sqlite,.sqlite3,.db,.db3,.bbl,.mybible,application/json,text/csv"><input id="vn" placeholder="Sigla da versão (ex.: ACF)"><input id="vc" placeholder="Nome completo (opcional)"><button class="btn" onclick="importVers()">Importar e guardar</button></div>'+
+  '<div class="card"><h3>Versões instaladas</h3>'+(VMETA.length?VMETA.map(function(m){var e=embutida(m.id);return '<div class="item" style="cursor:default;'+(e?'display:block':'')+'"><div class="row" style="justify-content:space-between;flex-wrap:nowrap"><div style="min-width:0"><b>'+esc(m.nome)+'</b>'+(m.completo?' <span class="tag">'+esc(m.completo)+'</span>':'')+
+    (e?' <span class="tag">· 📖 incluída no app</span>':cfgOk()?' <span class="tag">· '+(VNUVEM[m.id]?'☁ na nuvem':'aguardando envio')+'</span>':'')+'<br><small id="vs_'+m.id+'">…</small></div>'+
+    (e?'':'<span class="row" style="flex-wrap:nowrap"><button class="btn ghost" title="Renomear" onclick="renVers(\''+m.id+'\')">✎</button><button class="btn ghost danger" title="Remover" onclick="delVers(\''+m.id+'\')">✕</button></span>')+'</div>'+
+    (e?'<div class="tag" style="margin-top:8px;padding:10px 12px;background:var(--bg2);border-radius:8px;line-height:1.5">'+credCompleto()+'</div>':'')+'</div>'}).join(''):'<p class="tag">Nenhuma ainda.</p>')+'</div>'}
+function setAtiva(id){S.va=id;biblia()}
+
+/* Versículo do dia: só a referência é fixa; o texto vem da versão instalada */
+var VD='Gênesis 1:1;Josué 1:9;Salmos 23:1;Salmos 27:1;Salmos 46:1;Salmos 91:1;Salmos 119:105;Salmos 121:2;Provérbios 3:5;Provérbios 3:6;Provérbios 16:3;Provérbios 22:6;Isaías 40:31;Isaías 41:10;Isaías 53:5;Jeremias 29:11;Jeremias 33:3;Lamentações 3:22;Miqueias 6:8;Naum 1:7;Habacuque 3:19;Sofonias 3:17;Eclesiastes 3:1;Deuteronômio 31:6;Êxodo 14:14;Números 6:24;1 Samuel 16:7;Jó 19:25;Mateus 5:16;Mateus 6:33;Mateus 7:7;Mateus 11:28;Mateus 28:20;Marcos 10:27;Lucas 1:37;Lucas 11:9;João 3:16;João 8:32;João 10:10;João 13:34;João 14:6;João 14:27;João 15:5;João 16:33;Atos 1:8;Romanos 5:8;Romanos 8:1;Romanos 8:28;Romanos 10:17;Romanos 12:2;1 Coríntios 10:13;1 Coríntios 13:13;2 Coríntios 5:17;2 Coríntios 12:9;Gálatas 2:20;Gálatas 5:22;Efésios 2:8;Efésios 6:10;Filipenses 4:6;Filipenses 4:7;Filipenses 4:13;Colossenses 3:23;1 Tessalonicenses 5:16;2 Timóteo 1:7;Hebreus 11:1;Hebreus 12:1;Tiago 1:5;Tiago 4:8;1 Pedro 5:7;1 João 1:9;1 João 4:8;Apocalipse 3:20;Apocalipse 21:4';
+function vdRef(){var l=VD.split(';'),d=new Date(),n=Math.floor((d-new Date(d.getFullYear(),0,0))/864e5),m=l[n%l.length].match(/^(.+) (\d+):(\d+)$/),bi=-1;
+  ALL.forEach(function(b,i){if(b[0]===m[1])bi=i});return{b:bi,c:+m[2],v:+m[3],t:m[0]}}
+function fillVd(){var box=document.getElementById('vd');if(!box)return;var r=vdRef(),id=verPrincipal();
+  function paint(txt,nome){VDT=txt?'“'+txt+'”\n— '+r.t+(nome?' ('+nome+')':'')+(embutida(id)?'\n'+credCurtoTxt():''):'';
+    box.innerHTML='<div class="vodr">Versículo do dia</div>'+(txt?'<div class="vodt">'+esc(txt)+'</div>':'<p style="margin:8px 0 0;color:var(--onc2)">Para ver o texto aqui, instale uma versão em Bíblia → Versões.</p>')+
+    '<div class="vodf"><span><b>'+esc(r.t)+'</b>'+(nome?' <small>· '+esc(nome)+'</small>':'')+'</span><span class="row" style="gap:6px">'+(txt?'<button class="pill" onclick="vdShare()">Compartilhar</button>':'')+'<button class="pill" onclick="abrirVd()">Abrir capítulo →</button></span></div>'+(txt&&embutida(id)?'<div style="margin-top:10px;font-size:.7rem;color:var(--onc2)">JFAAL, © Marcos Cristiano Alves Ferreira (2024) · <a href="'+JFAAL.lic+'" target="_blank" rel="noopener" style="color:var(--acc2)">CC BY 3.0 BR</a> · <a href="#" onclick="creditos(event);return false" style="color:var(--acc2)">créditos</a></div>':'')}
+  if(!id){paint();return}
+  getVers(id).then(function(L){var c=L&&L[r.b]&&L[r.b][r.c-1],m=VMETA.filter(function(x){return x.id===id})[0];paint(c&&c[r.v-1],m&&m.nome)}).catch(function(){paint()})}
+var VDT='';
+function vdShare(){if(!VDT)return;if(navigator.share)navigator.share({text:VDT}).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(VDT).then(function(){toast('Versículo copiado.')});else prompt('Copie o texto:',VDT)}
+function abrirVd(){var r=vdRef();S.book=r.b;S.chap=r.c;S.verse=r.v;S.cmp=false;S.bt='ler';go('biblia')}
+var ABR='Gn,Êx,Lv,Nm,Dt,Js,Jz,Rt,1Sm,2Sm,1Rs,2Rs,1Cr,2Cr,Ed,Ne,Et,Jó,Sl,Pv,Ec,Ct,Is,Jr,Lm,Ez,Dn,Os,Jl,Am,Ob,Jn,Mq,Na,Hc,Sf,Ag,Zc,Ml,Mt,Mc,Lc,Jo,At,Rm,1Co,2Co,Gl,Ef,Fp,Cl,1Ts,2Ts,1Tm,2Tm,Tt,Fm,Hb,Tg,1Pe,2Pe,1Jo,2Jo,3Jo,Jd,Ap'.split(',');
+function norm(t){return String(t).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,'')}
+function filtraLv(){var el=document.getElementById('bq'),box=document.getElementById('lv');if(!el||!box)return;
+  var q=norm(el.value.replace(/([^\d\s:.,])\s*[\d:.,]+$/,'$1')),h='';
+  ALL.forEach(function(b,i){if(!q||norm(ABR[i]).indexOf(q)===0||norm(b[0]).indexOf(q)>-1)h+='<div class="chip sm'+(S.book===i?' on':'')+'" title="'+esc(b[0])+'" onclick="pickBook('+i+')">'+ABR[i]+'</div>'});
+  box.innerHTML=h||'<span class="tag">Nenhum livro encontrado.</span>';box.style.display=''}
+function irBusca(){var t=document.getElementById('bq').value.trim(),m=t.match(/^(.*?)\s*(?:(\d+)(?:\s*[:.,]\s*(\d+))?)?$/)||[],nm=norm(m[1]||''),b=S.book,i;
+  if(nm){b=bookIdx(m[1]);
+    for(i=0;i<ALL.length&&b<0;i++)if(norm(ALL[i][0]).indexOf(nm)===0)b=i;
+    if(m[2])for(i=0;i<ALL.length&&b<0;i++)if(norm(ALL[i][0]).indexOf(nm)>-1)b=i;
+    if(b<0){if(!m[2]){S.bq=t;S.bt='busca';biblia();fazBusca();return}toast('Livro não encontrado.');return}}
+  if(b===null){toast('Escolha um livro.');return}
+  var c=+(m[2]||document.getElementById('bc').value)||1,vv=+(m[2]?m[3]:document.getElementById('bv').value)||null;
+  if(c>ALL[b][1]){toast(ALL[b][0]+' tem '+ALL[b][1]+' capítulos.');return}
+  S.book=b;S.chap=c;S.verse=vv;biblia();window.scrollTo(0,0)}
+
+/* Anotações (de versículo, de um trecho de versículos ou do capítulo) */
+function listaAnot(){var it=[];
+  (DATA.anot||[]).forEach(function(x){it.push({k:'v',id:x.id,b:x.b,c:x.c,v:x.v,e:x.e||0,t:x.t})});
+  Object.keys(DATA.notes||{}).forEach(function(k){var m=k.match(/^(.+) (\d+)$/),b=-1;if(!m||!String(DATA.notes[k]).trim())return;ALL.forEach(function(x,i){if(x[0]===m[1])b=i});if(b>=0)it.push({k:'c',id:k,b:b,c:+m[2],v:0,e:0,t:DATA.notes[k]})});
+  it.sort(function(x,y){return x.b-y.b||x.c-y.c||x.v-y.v});return it}
+function refA(x){return ALL[x.b][0]+' '+x.c+(x.k==='v'?':'+x.v+(x.e?'-'+x.e:''):' (capítulo)')}
+function anotView(){var e=S.ed,h='<div class="row" style="margin-bottom:12px"><input id="aq" placeholder="Buscar nas anotações…" oninput="drawAnot()" style="flex:1;margin:0;min-width:0"><button class="btn" onclick="novaAnot()">+ Nova</button></div>';
+  if(e){var op=ALL.map(function(b,i){return '<option value="'+i+'"'+(i===e.b?' selected':'')+'>'+esc(b[0])+'</option>'}).join('');
+    h+='<div class="card"><h3>'+(e.orig?'Editar anotação':'Nova anotação')+'</h3><div class="row" style="flex-wrap:nowrap"><select id="eb" style="flex:2;min-width:0">'+op+'</select><input id="ec" type="number" min="1" inputmode="numeric" placeholder="Cap." value="'+esc(e.c)+'" style="flex:.8;min-width:0"><input id="ev" type="number" min="1" inputmode="numeric" placeholder="Vers." value="'+esc(e.v)+'" style="flex:.8;min-width:0"><input id="ee" type="number" min="1" inputmode="numeric" placeholder="até" value="'+esc(e.e)+'" style="flex:.8;min-width:0"></div><p class="tag" style="margin:2px 0">Deixe o versículo em branco para anotar o capítulo inteiro. Use “até” para um trecho (ex.: 16 até 18).</p><textarea id="et" placeholder="Sua anotação…">'+esc(e.t)+'</textarea><div class="row"><button class="btn" onclick="saveAnot()">Salvar</button><button class="btn ghost" onclick="S.ed=null;biblia()">Cancelar</button></div></div>'}
+  return h+'<div id="al"></div>'}
+function novaAnot(b,c,vv,ee){b=b==null?(S.book!==null?S.book:0):b;c=c||S.chap||1;ee=ee&&ee>vv?ee:0;var x=vv?anotV(b,c,vv,ee):null,t=vv?(x?x.t:''):(DATA.notes||{})[ALL[b][0]+' '+c]||'';
+  S.ed={b:b,c:c,v:vv||'',e:ee||'',t:t,orig:x?{k:'v',id:x.id}:null};S.bt='anot';biblia();window.scrollTo(0,0)}
+function editAnot(k,id){var x=listaAnot().filter(function(y){return y.k===k&&y.id===id})[0];if(!x)return;S.ed={b:x.b,c:x.c,v:x.v||'',e:x.e||'',t:x.t,orig:{k:k,id:id}};biblia();window.scrollTo(0,0)}
+function rmAnot(k,id){if(k==='v')save('anot',(DATA.anot||[]).filter(function(x){return x.id!==id}));else{var n=Object.assign({},DATA.notes);delete n[id];save('notes',n)}}
+function saveAnot(){var b=+v('eb'),c=+v('ec'),vv=+v('ev')||0,ee=+v('ee')||0,t=v('et');
+  if(!c||c<1||c>ALL[b][1]){toast(ALL[b][0]+' tem '+ALL[b][1]+' capítulos.');return}
+  if(!t.trim()){toast('Escreva a anotação.');return}
+  if(ee&&vv&&ee<vv){var tq=ee;ee=vv;vv=tq}if(!vv||ee===vv)ee=0;
+  if(S.ed&&S.ed.orig)rmAnot(S.ed.orig.k,S.ed.orig.id);
+  if(vv){var l=(DATA.anot||[]).filter(function(x){return !(x.b===b&&x.c===c&&x.v===vv&&(x.e||0)===ee)}),o={id:'a'+Date.now(),b:b,c:c,v:vv,t:t,d:iso(new Date())};if(ee)o.e=ee;l.push(o);save('anot',l)}
+  else{var n=Object.assign({},DATA.notes);n[ALL[b][0]+' '+c]=t;save('notes',n)}
+  S.ed=null;toast('Anotação salva.');biblia()}
+function drawAnot(){var box=document.getElementById('al');if(!box)return;var q=norm(document.getElementById('aq').value||''),it=listaAnot().filter(function(x){return !q||norm(refA(x)+x.t).indexOf(q)>-1});
+  box.innerHTML=it.length?'<div class="card" style="padding:4px 14px">'+it.map(function(x){var key=x.k+'|'+x.id,ab=S.ao===key,t=String(x.t||'');
+    return '<div class="item" style="display:block" onclick="togAo(\''+esc(key)+'\')"><div class="row" style="justify-content:space-between;flex-wrap:nowrap"><div style="min-width:0"><b class="cref" style="font-size:.95rem">'+esc(refA(x))+'</b>'+
+      (ab?'':'<br><small style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+esc(t.replace(/\s+/g,' ').slice(0,140))+'</small>')+'</div><span class="chev">'+(ab?'⌄':'›')+'</span></div>'+
+      (ab?'<div onclick="event.stopPropagation()" style="cursor:auto"><p style="white-space:pre-wrap;margin:.5em 0 0">'+esc(t)+'</p><div class="ca"><button class="btn ghost" onclick="abrirAnot('+x.b+','+x.c+','+x.v+')">Abrir na Bíblia</button><button class="btn ghost" onclick="editAnot(\''+x.k+'\',\''+esc(x.id)+'\')">Editar</button><button class="btn ghost danger" onclick="delAnot(\''+x.k+'\',\''+esc(x.id)+'\')">Excluir</button></div></div>':'')+'</div>'}).join('')+'</div>':vazio(q?'Nada encontrado.':'Nenhuma anotação ainda. Toque em “+ Nova” ou, na aba Ler, toque nos versículos e em “📝 Anotar”.')}
+function togAo(k){S.ao=S.ao===k?null:k;drawAnot()}
+function abrirAnot(b,c,v){S.book=b;S.chap=c;S.verse=v||null;S.cmp=false;S.bt='ler';biblia();window.scrollTo(0,0)}
+function delAnot(k,id){if(!confirm('Excluir esta anotação?'))return;rmAnot(k,id);drawAnot()}
+
+/* Versões bíblicas: colunas independentes (versão, livro, capítulo e versículo por coluna) */
+function ex(id){return VMETA.some(function(m){return m.id===id})}
+function panesLoad(){try{var c=JSON.parse(LS.getItem('cmp'));if(c&&c.panes&&c.panes.length){S.cmp=!!c.on;S.panes=c.panes}}catch(e){}}
+function panesSave(){try{LS.setItem('cmp',JSON.stringify({on:!!S.cmp,panes:S.panes||[]}))}catch(e){}}
+function togPanes(){if(S.cmp){S.cmp=false}else{
+    var a=verAtiva(),b=S.book!==null?S.book:0,c=S.chap||1,o=VMETA.filter(function(m){return m.id!==a})[0];
+    if(!S.panes||!S.panes.length)S.panes=[{v:a,b:b,c:c,vs:S.verse||null},{v:o?o.id:a,b:b,c:c,vs:S.verse||null}];S.cmp=true}
+  panesSave();biblia()}
+function addPane(){if(S.panes.length>=3){toast('Até 3 colunas.');return}var l=S.panes[S.panes.length-1],o=VMETA.filter(function(m){return m.id!==l.v})[0];
+  S.panes.push({v:o?o.id:l.v,b:l.b,c:l.c,vs:l.vs});panesSave();biblia()}
+function delPane(i){S.panes.splice(i,1);panesSave();biblia()}
+function paneSet(i,k,val){var p=S.panes[i];
+  if(k==='b'){p.b=val;p.c=1;p.vs=null;panesSave();biblia();return}
+  if(k==='c'){if(!val||val<1||val>ALL[p.b][1]){toast(ALL[p.b][0]+' tem '+ALL[p.b][1]+' capítulos.');biblia();return}p.c=val;panesSave();biblia();return}
+  p[k]=val;panesSave();paintPane(i)}
+function paneStep(i,d){var p=S.panes[i],n=p.c+d;p.vs=null;
+  if(n>ALL[p.b][1]){if(p.b>=ALL.length-1)return;p.b++;n=1}else if(n<1){if(p.b<=0)return;p.b--;n=ALL[p.b][1]}
+  p.c=n;panesSave();biblia()}
+function panesView(c){var P=S.panes||[];
+  return '<div class="row" style="justify-content:space-between;margin-bottom:10px"><b>Versões bíblicas</b>'+(P.length<3?'<button class="btn ghost" onclick="addPane()">+ Coluna</button>':'')+'</div>'+
+    '<div class="panes" style="--n:'+P.length+'">'+P.map(function(p,i){return paneHtml(p,i,c)}).join('')+'</div>'}
+function paneHtml(p,i,c){
+  var vo=VMETA.map(function(m){return '<option value="'+m.id+'"'+(m.id===p.v?' selected':'')+'>'+esc(c.full?(m.completo||m.nome):m.nome)+'</option>'}).join(''),
+      bo=ALL.map(function(b,k){return '<option value="'+k+'"'+(k===p.b?' selected':'')+'>'+esc(b[0])+'</option>'}).join('');
+  return '<div class="pane"><div class="panehd"><div class="row" style="flex-wrap:nowrap"><select onchange="paneSet('+i+',\'v\',this.value)" style="flex:1;min-width:0">'+(vo||'<option>Sem versões</option>')+'</select>'+(S.panes.length>1?'<button class="btn ghost" title="Remover coluna" onclick="delPane('+i+')">✕</button>':'')+'</div>'+
+    '<select onchange="paneSet('+i+',\'b\',+this.value)">'+bo+'</select>'+
+    '<div class="row" style="flex-wrap:nowrap"><button class="btn ghost" onclick="paneStep('+i+',-1)">‹</button><input type="number" min="1" inputmode="numeric" placeholder="Cap." value="'+p.c+'" onchange="paneSet('+i+',\'c\',+this.value)" style="min-width:0"><input type="number" min="1" inputmode="numeric" placeholder="Vers." value="'+(p.vs||'')+'" onchange="paneSet('+i+',\'vs\',+this.value||null)" style="min-width:0"><button class="btn ghost" onclick="paneStep('+i+',1)">›</button></div></div>'+
+    '<div class="panetx'+(c.par?' par':'')+'" id="pnt'+i+'" style="font-size:'+c.fs+'px;line-height:'+c.lh+'"></div></div>'}
+function paintPane(i){var p=S.panes[i],box=document.getElementById('pnt'+i),c=lcfg();if(!box)return;
+  if(!p.v||!ex(p.v)){box.innerHTML='<p class="tag" style="text-align:center">Nenhuma versão instalada.<br>Importe uma na aba “Versões”.</p>';return}
+  getVers(p.v).then(function(L){var vs=L&&L[p.b]&&L[p.b][p.c-1]||[],k;
+    if(!vs.length){box.innerHTML='<p class="tag" style="text-align:center">Sem texto para '+esc(ALL[p.b][0])+' '+p.c+' nesta versão.</p>';return}
+    var an={};(DATA.anot||[]).forEach(function(x){if(x.b===p.b&&x.c===p.c)for(k=x.v;k<=(x.e||x.v);k++)an[k]=1});
+    box.innerHTML=vs.map(function(t,k){return '<p id="p'+i+'v'+(k+1)+'" class="vr'+(p.vs===k+1?' vhl':'')+'" style="cursor:default">'+(c.nums?'<b class="vn" style="cursor:pointer" title="Anotar este versículo" onclick="novaAnot('+p.b+','+p.c+','+(k+1)+')">'+(k+1)+'</b> ':'')+esc(t)+(an[k+1]?' <span class="mk">📝</span>':'')+'</p>'}).join('')+(embutida(p.v)?credCurto():'');
+    if(p.vs){var el=document.getElementById('p'+i+'v'+p.vs);if(el)el.scrollIntoView({block:'nearest',behavior:'smooth'})}
+  }).catch(function(){box.innerHTML='<p class="tag">Não foi possível carregar a versão.</p>'})}
+function paintPanes(){(S.panes||[]).forEach(function(p,i){paintPane(i)})}
+panesLoad();
+bkIniciar();
+render('home');
+loadMeta().then(instalaJfaal);
+if('serviceWorker' in navigator&&location.protocol.indexOf('http')===0)window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){})});
+pull();setInterval(pull,30000);
+document.addEventListener('visibilitychange',function(){if(!document.hidden)pull()});
+</script>
+</body>
+</html>
